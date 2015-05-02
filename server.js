@@ -22,5 +22,3 @@ var API = require('./app/routes/routes.js')
 //PARTY DOWN
 app.listen(port);
 console.log('the party happens at http://localhost' + port);
-
-//GET THIS UNDERWAY

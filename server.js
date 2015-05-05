@@ -15,21 +15,15 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost/db_leaders');
 
 // BRING IN THE MODEL
-var House = require('./app/models/house.js');
+var House = require('./app/models/house');
 
 // BRING IN THE ROUTER
-var API = require('./app/routes/routes.js')
+var routes = require('./app/routes/routes.core');
+app.use('/', routes);
 
 // VIEWS
 app.set('views', './views');
 app.set('view engine', 'jade');
-
-
-// TODO: Move this into a module
-app.get('/', function (req, res){
-	console.log('we here');
-	res.render('index', { title: 'HackerYou.camp', message: 'This is a website'});
-});
 
 //PARTY DOWN
 app.listen(port);

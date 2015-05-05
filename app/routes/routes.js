@@ -3,6 +3,7 @@ var express = require('express');
 
 // GET TO ROUTIN'
 var app = express();
+var api = express();
 var router = express.Router();
 
 router.use(function(req, res, next) {
@@ -13,16 +14,16 @@ router.use(function(req, res, next) {
 
 // space for more routes
 
-app.use('/api', router);
+app.use('/api', api);
 
-router.get('/', function(req, res) {
+api.get('/', function(req, res) {
     res.json({ message: 'get an API' });   //test route message
 });
 
 
 
 
-router.route('/house')
+api.route('/house')
 
 .post(function(req, res) {
 	console.log('house');
@@ -46,4 +47,4 @@ router.route('/house')
             res.json(house);
         });
     });
-app.use('/api', router);
+app.use('/api', api);

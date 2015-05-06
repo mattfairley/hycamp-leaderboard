@@ -3,3 +3,9 @@ html
 		title!= title
 	body
 		h1!= message
+		form.add-house
+			label(for="name") House Name
+			input#text(type="text" name="name")
+			label(for="members") Members
+			input#members(type="text" name="members")
+			input(type="submit")

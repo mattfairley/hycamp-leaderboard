@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // CONNECT TO THE DATABASE
-mongoose.connect('mongodb://localhost/db_leaders');
+mongoose.connect('mongodb://localhost/db_leaderboard');
 
 // BRING IN THE MODEL
 var House = require('./app/models/house');
@@ -24,6 +24,8 @@ app.use('/', routes);
 // VIEWS
 app.set('views', './views');
 app.set('view engine', 'jade');
+app.use( express.static( __dirname + "/static" ) );
+app.use( express.static( __dirname + "/compiled" ) );
 
 //PARTY DOWN
 app.listen(port);

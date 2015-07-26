@@ -3,6 +3,7 @@ var express = require('express');
 
 // GET TO ROUTIN'
 var api = require('./routes.api');
+var admin = require('./routes.admin');
 
 var router = express.Router();
 
@@ -18,6 +19,8 @@ router.get('/', function (req, res){
 })
 
 router.use('/api', api);
+
+router.use('/admin', admin);
 
 module.exports = router;
 

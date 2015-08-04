@@ -1,15 +1,11 @@
 var mongoose = require('mongoose');
 var express = require('express');
 
-// GET TO ROUTIN'
-var api = require('./routes.api');
-var admin = require('./routes.admin');
-
 var router = express.Router();
 
 router.use(function(req, res, next) {
  
-    console.log('Something is happening.');
+    console.log('This is where auth will go');
     next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -18,9 +14,9 @@ router.get('/', function (req, res){
 	res.render('index', { title: 'HackerYou.camp', message: 'This is a real website'});
 })
 
-router.use('/api', api);
-
-router.use('/admin', admin);
+// GET TO ROUTIN'
+router.use('/api', require('./routes.api'));
+router.use('/admin', require('./routes.admin'));
 
 module.exports = router;
 

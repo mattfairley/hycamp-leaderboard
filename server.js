@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 mongoose.connect(config.db.url);
 
 // BRING IN THE MODELS
-var House = require('./app/models/house');
+app.set('models', require('./app/models')(app, mongoose));
 
 // BRING IN THE ROUTER
 var routes = require('./app/routes/routes.core');
@@ -26,7 +26,6 @@ app.use('/', routes);
 // VIEWS
 app.set('views', './views');
 app.set('view engine', 'jade');
-app.use(express.static( __dirname + '/static'));
 app.use(express.static( __dirname + '/compiled'));
 
 //PARTY DOWN

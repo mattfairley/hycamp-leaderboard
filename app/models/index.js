@@ -11,13 +11,13 @@ module.exports = function() {
 			members: [String]
 		}),
 
-		user: mongoose.model('house', {
-			uid: {type: Schema.Types.ObjectId},
-			cabin: {type: Schema.Types.ObjectId, ref: 'house', index: true},
-			points: Number
+		event: mongoose.model('event', {
+			id: {type: Schema.Types.ObjectId},
+			location: String,
+			description: String,
+			time: {type: Date, default: Date.now}
 		})
 
-		//TODO: Events
 	}
 
 	return models

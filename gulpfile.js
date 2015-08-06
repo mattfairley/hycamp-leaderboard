@@ -37,7 +37,8 @@ var onError = function(err) {
 var paths = {
 	dest: 'compiled/',
 	js: ['scripts/*.js', 'scripts/*.jsx', 'scripts/**/*.js', 'scripts/**/*.jsx'],
-	lib: 'scripts/lib/**.js',
+	jsDest: 'compiled/*.js',
+	lib: 'lib/*.js',
 	scss: 'styles/main.scss',
 	scssWatch: ['styles/**/*.scss'],
 	html: 'views/*.html'
@@ -55,6 +56,15 @@ gulp.task('scripts', ['lint'], function(){
 		.pipe(gulpif(argv.prod, sourcemaps.write('./map')))
 		.pipe(gulp.dest(paths.dest))
 		.pipe(plumber.stop());
+});
+
+gulp.task('lib', function(){
+	return gulp.src(paths.lib)
+		// .pipe(sourcemaps.init())
+		.pipe(concat('lib.min.js'))
+		.pipe(uglify('lib.min.js'))
+		// .pipe(sourcemaps.write('./map'))
+		.pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('lint', function(){
@@ -87,7 +97,7 @@ gulp.task('styles', function(){
 		.pipe(reload({stream: true}))
 });
 
-gulp.task('build', ['scripts', 'styles'], function(){
+gulp.task('build', ['scripts', 'styles', 'lib'], function(){
 
 });
 
@@ -99,6 +109,7 @@ gulp.task('watch', ['serve'], function(){
 	gulp.watch(paths.js, ['scripts']);
 	gulp.watch([paths.scssWatch], ['styles'])
 	gulp.watch('views/*.jade').on('change', browserSync.reload);
+	gulp.watch(paths.jsDest).on('change', browserSync.reload)
 })
 
 gulp.task('serve', ['nodemon'], function(){

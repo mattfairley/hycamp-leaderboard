@@ -7,71 +7,71 @@ router.get('/', function(req, res) {
 });
 
 
-router.route('/houses')
+router.route('/cabins')
 
-	//get list of houses
+	//get list of cabins
 	.get(function(req,res){
-		var House = app.get('models').house;
-	    House.find(function(err, house) {
+		var Cabin = app.get('models').cabin;
+	    Cabin.find(function(err, cabin) {
 	        if (err)
 	            return res.send(err);
 
-	        res.json(house);
+	        res.json(cabin);
 	    });
 	})
 
-	//create new houses
+	//create new cabins
 	.post(function(req,res){
-		var House = app.get('models').house;
-		var house = new House();      
-		house.name = req.body.name;
-		house.points = 0;
-		house.members = req.body.members;
+		var Cabin = app.get('models').cabin;
+		var cabin = new Cabin();      
+		cabin.name = req.body.name;
+		cabin.points = 0;
+		cabin.members = req.body.members;
 	   
-		house.save(function(err) {
+		cabin.save(function(err) {
 	    	if (err)
 	        	return res.send(err);
 
-	    	res.json({ message: 'house created' });
+	    	res.json({ message: 'cabin created' });
 		});
 	})
 
-router.route('/houses/:id')
+router.route('/cabins/:id')
 	.get(function(req, res){
-		var House = app.get('models').house;
-		House.findById(req.params.id, function(err, house) {
+		var Cabin = app.get('models').cabin;
+		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
 
-			// return that House
-			res.json(house);
+			// return that Cabin
+			res.json(cabin);
 		});
 
 	})
 
 	.post(function(req, res){
-		var House = app.get('models').house;
-		House.findById(req.params.id, function(err, house) {
+		var Cabin = app.get('models').cabin;
+		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
 
-			if (req.body.name) house.name = req.body.name;
-			if (req.body.points) house.points = req.body.points;
-			if (req.body.members) house.members = req.body.members;
+			if (req.body.name) cabin.name = req.body.name;
+			if (req.body.points) cabin.points = req.body.points;
+			if (req.body.members) cabin.members = req.body.members;
 
-			house.save(function(err) {
+			cabin.save(function(err) {
 				if (err) return res.send(err);
 
 				// return a message
-				res.json(house);
+				res.json(cabin);
 			});
 
 		});
 	})
 
 	.delete(function(req, res){
-		var House = app.get('models').house;
-		House.remove({
+		var Cabin = app.get('models').cabin;
+		Cabin.remove({
 			_id: req.params.id
-		}, function(err, house) {
+		}, function(err, cabin) {
 			if (err) return res.send(err);
 
 			res.json({ message: 'Successfully deleted' });
@@ -114,7 +114,7 @@ router.route('/events/:id')
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
 
-			// return that House
+			// return that Cabin
 			res.json(event);
 		});
 

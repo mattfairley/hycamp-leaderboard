@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 module.exports = function() {
 	var models = {
-		house: mongoose.model('house', {
+		cabin: mongoose.model('cabin', {
 			id: {type: Schema.Types.ObjectId},			
 			name: String,
 			points: Number,

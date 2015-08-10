@@ -5,8 +5,8 @@ var router = express.Router();
 
 router.use(function(req, res, next) {
  
-    console.log('This is where auth will go');
-    next(); // make sure we go to the next routes and don't stop here
+    // console.log('This is where auth will go');
+    next();
 });
 
 router.get('/', function (req, res){

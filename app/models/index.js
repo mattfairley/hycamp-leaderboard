@@ -8,7 +8,8 @@ module.exports = function() {
 			id: {type: Schema.Types.ObjectId},			
 			name: String,
 			points: Number,
-			members: [String]
+			members: [String],
+			icon: String
 		}),
 
 		event: mongoose.model('event', {

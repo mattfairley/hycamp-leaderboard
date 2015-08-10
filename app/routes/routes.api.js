@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+router.use(function(req, res, next){
+	res.contentType('application/json');
+	// res.setHeader('Access-Control-Allow-Origin', '*');
+	// res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE');
+	// res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \ Authorization');
+	next();
+})
 
 router.get('/', function(req, res) {
     res.json({ message: 'get an API' });   //test route message
@@ -11,22 +18,24 @@ router.route('/cabins')
 
 	//get list of cabins
 	.get(function(req,res){
-		var Cabin = app.get('models').cabin;
+		var Cabin = req.app.get('models').cabin;
 	    Cabin.find(function(err, cabin) {
+	    	var output = {results: cabin}
 	        if (err)
 	            return res.send(err);
-
-	        res.json(cabin);
+	        res.json(output);
 	    });
 	})
 
 	//create new cabins
 	.post(function(req,res){
-		var Cabin = app.get('models').cabin;
+		console.log(req.query)
+		var Cabin = req.app.get('models').cabin;
 		var cabin = new Cabin();      
-		cabin.name = req.body.name;
+		cabin.name = req.query.name;
 		cabin.points = 0;
-		cabin.members = req.body.members;
+		cabin.members = req.query.members;
+		cabin.icon = req.query.icon
 	   
 		cabin.save(function(err) {
 	    	if (err)
@@ -38,7 +47,7 @@ router.route('/cabins')
 
 router.route('/cabins/:id')
 	.get(function(req, res){
-		var Cabin = app.get('models').cabin;
+		var Cabin = req.app.get('models').cabin;
 		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
 
@@ -49,13 +58,13 @@ router.route('/cabins/:id')
 	})
 
 	.post(function(req, res){
-		var Cabin = app.get('models').cabin;
+		var Cabin = req.app.get('models').cabin;
 		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
 
-			if (req.body.name) cabin.name = req.body.name;
-			if (req.body.points) cabin.points = req.body.points;
-			if (req.body.members) cabin.members = req.body.members;
+			if (req.query.name) cabin.name = req.query.name;
+			if (req.query.points) cabin.points = req.query.points;
+			if (req.query.members) cabin.members = req.query.members;
 
 			cabin.save(function(err) {
 				if (err) return res.send(err);
@@ -68,7 +77,7 @@ router.route('/cabins/:id')
 	})
 
 	.delete(function(req, res){
-		var Cabin = app.get('models').cabin;
+		var Cabin = req.app.get('models').cabin;
 		Cabin.remove({
 			_id: req.params.id
 		}, function(err, cabin) {
@@ -82,23 +91,24 @@ router.route('/events')
 
 	//get list of events
 	.get(function(req,res){
-		var Event = app.get('models').event;
+		var Event = req.app.get('models').event;
 	    Event.find(function(err, event) {
+	    	var output = {results: event}
 	        if (err)
 	            return res.send(err);
 
-	        res.json(event);
+	        res.json(output);
 	    });
 	})
 
 	//create new events
 	.post(function(req,res){
-		var Event = app.get('models').event;
+		var Event = req.app.get('models').event;
 		var event = new Event();      
-		event.name = req.body.name;
-		event.location = req.body.location;
-		event.time = req.body.time
-		event.description = req.body.description;
+		event.name = req.query.name;
+		event.location = req.query.location;
+		event.time = req.query.time
+		event.description = req.query.description;
 	   
 		event.save(function(err) {
 	    	if (err)
@@ -110,7 +120,7 @@ router.route('/events')
 
 router.route('/events/:id')
 	.get(function(req, res){
-		var Event = app.get('models').event;
+		var Event = req.app.get('models').event;
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
 
@@ -121,14 +131,14 @@ router.route('/events/:id')
 	})
 
 	.post(function(req, res){
-		var Event = app.get('models').event;
+		var Event = req.app.get('models').event;
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
 
-			if (req.body.name) event.name = req.body.name;
-			if (req.body.location) event.location = req.body.location;
-			if (req.body.description) event.description = req.body.description;
-			if (req.body.time) event.time = req.body.time;
+			if (req.query.name) event.name = req.query.name;
+			if (req.query.location) event.location = req.query.location;
+			if (req.query.description) event.description = req.query.description;
+			if (req.query.time) event.time = req.query.time;
 
 			event.save(function(err) {
 				if (err) return res.send(err);
@@ -141,7 +151,7 @@ router.route('/events/:id')
 	})
 
 	.delete(function(req, res){
-		var Event = app.get('models').event;
+		var Event = req.app.get('models').event;
 		Event.remove({
 			_id: req.params.id
 		}, function(err, event) {

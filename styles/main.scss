@@ -1,5 +1,18 @@
-body {
-	margin: 0;
-	color: red;
-	background: dodgerblue;
-}
+// Vendor stylesheets
+// @import 'vendors/';
+
+// Utilities
+@import 'util/variables';
+@import 'util/functions';
+@import 'util/mixins';
+
+// Base
+@import 'base/reset';
+@import 'base/base';
+@import 'base/typography';
+
+@import 'layout/header';
+@import 'layout/scaffold';
+@import 'layout/forms';
+
+@import 'components/buttons';

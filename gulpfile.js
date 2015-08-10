@@ -36,7 +36,7 @@ var onError = function(err) {
 //Define paths
 var paths = {
 	dest: 'compiled/',
-	js: ['scripts/*.js', 'scripts/*.jsx', 'scripts/**/*.js', 'scripts/**/*.jsx'],
+	js: ['scripts/*.js', 'scripts/**/*.js', 'scripts/**/*.jsx', 'scripts/*.jsx'],
 	jsDest: 'compiled/*.js',
 	lib: 'lib/*.js',
 	scss: 'styles/main.scss',
@@ -76,7 +76,7 @@ gulp.task('lint', function(){
             beep: true,
             abort: true
         }))
-        .pipe(jshint({ linter: require('jshint-jsx').JSXHINT}))
+        .pipe(jshint({ esnext: true, linter: require('jshint-jsx').JSXHINT}))
         .pipe(jshint.reporter('jshint-stylish'));
 });
 

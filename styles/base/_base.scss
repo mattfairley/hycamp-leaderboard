@@ -1,0 +1,18 @@
+body, html {
+	height: 100%;
+}
+
+body {
+	background: $white;
+	color: $black;
+	font-weight: 300;
+}
+
+a {
+	text-decoration: none;
+	color: $red;
+	&:hover, &:active {
+		color: darken($red, 20);
+	}
+}
+

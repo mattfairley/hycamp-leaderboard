@@ -1,26 +1,26 @@
 if (typeof(HYC) === 'undefined') var HYC = {};
 if (typeof(HYC.data) === 'undefined') HYC.data = {};
 
-HYC.data.cabins = {
+HYC.data.events = {
 
 	list: function() {
-	    return qwest.get('api/cabins');
+	    return qwest.get('api/events');
 	},
 
 	add: function(data) {
-	    return qwest.post('api/cabins', data);
+	    return qwest.post('api/events', data);
 	},
 
 	delete: function(id) {
-	    return qwest.delete('api/cabins/' + id);
+	    return qwest.delete('api/events/' + id);
 	},
 
 	edit: function(id) {
-	    return qwest.post('api/cabins/' + id);
+	    return qwest.post('api/events/' + id);
 	},
 
 	details: function(id) {
-	    return qwest.get('api/cabins/' + id);
+	    return qwest.get('api/events/' + id);
 	}
 	
 };

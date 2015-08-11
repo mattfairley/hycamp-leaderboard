@@ -7,11 +7,13 @@ UI.admin.modal.cabin = {
 	open(id, cabin) {
 		cabin = cabin || {};
 		var modal = document.getElementById('modal');
+		HYC.addClass(modal, 'is-visible');
 		React.render(<UI.admin.modal.cabin.element cabin={cabin} id={id}/>, modal);	
 	},
 
 	close() {
 		var modal = document.getElementById('modal');
+		HYC.removeClass(modal, 'is-visible');
 		React.unmountComponentAtNode(modal);
 	},
 

@@ -11,7 +11,7 @@ UI.admin.page.cabins = {
     render: function(container, params){
         console.info('[UI.admin.page.cabins] rendering page');
         React.render(<UI.admin.page.cabins.element />, container);
-        HYC.events.publish('sectionChange', {section: 'cabins'});
+        HYC.events.publish('sectionChange', {section: 'Cabins'});
     },
 
     element: React.createClass({

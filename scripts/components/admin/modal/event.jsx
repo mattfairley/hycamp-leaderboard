@@ -7,11 +7,13 @@ UI.admin.modal.event = {
 	open(id, event) {
 		event = event || {};
 		var modal = document.getElementById('modal');
+		HYC.addClass(modal, 'is-visible');
 		React.render(<UI.admin.modal.event.element event={event} id={id}/>, modal);	
 	},
 
 	close() {
 		var modal = document.getElementById('modal');
+		HYC.removeClass(modal, 'is-visible');
 		React.unmountComponentAtNode(modal);
 	},
 
@@ -31,7 +33,7 @@ UI.admin.modal.event = {
 		closeModal: function() {
 			UI.admin.modal.cabin.close();
 		},
-		
+
 		deleteEvent(e) {
 			e.preventDefault();
 			var self = this;

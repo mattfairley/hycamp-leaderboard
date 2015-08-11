@@ -11,7 +11,7 @@ UI.admin.page.events = {
     render: function(container, params){
         console.info('[UI.admin.page.events] rendering page');
         React.render(<UI.admin.page.events.element />, container);
-        HYC.events.publish('sectionChange', {section: 'events'});
+        HYC.events.publish('sectionChange', {section: 'Events'});
     },
 
     element: React.createClass({
@@ -30,11 +30,20 @@ UI.admin.page.events = {
 
     	render: function() {
     		console.log('Rendering', this.state.events);
-    		return (
-    			<div className="event-list">
-    				<h2>Events</h2>
-    			</div>
-    			);
+    		var events = this.state.events.map(function(event) {
+                return <UI.admin.event event={event} id={event._id} />;
+            });
+
+
+            return (
+                <div className="admin-wrapper">
+                    <h2>Events</h2>
+                    <button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+    	            <ul className="event-list">
+    	    	        {events}
+        	        </ul>
+                </div>
+            );
     	}
     })
 };

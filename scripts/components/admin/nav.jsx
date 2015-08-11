@@ -12,7 +12,7 @@ UI.admin.nav = React.createClass({
 
 	getInitialState: function(){
 		return {
-			currentSection: 'Home'
+			currentSection: 'Points'
 		};
 	},
 

@@ -26,18 +26,30 @@ UI.admin.page.cabins = {
     		}).catch(function(err){
     			console.error('Error getting cabin list', err);
     		});
+
+
+
     	},
+
+    	openModal: function(e) {
+    		UI.admin.modal.cabin.open();
+    	},
+
 
     	render: function() {
     		console.log('Rendering', this.state.cabins);
     		var cabins = this.state.cabins.map(function(cabin) {
-                return <UI.admin.cabin cabin={cabin} />
+                return <UI.admin.cabin cabin={cabin} id={cabin._id} />;
             });
 
+
             return (
-                <div>
+                <div className="admin-wrapper">
                     <h2>Cabins</h2>
-                    {cabins}
+                    <button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+    	            <ul className="cabin-list">
+    	    	        {cabins}
+        	        </ul>
                 </div>
             );
     	}

@@ -29,13 +29,12 @@ router.route('/cabins')
 
 	//create new cabins
 	.post(function(req,res){
-		console.log(req.query)
 		var Cabin = req.app.get('models').cabin;
 		var cabin = new Cabin();      
-		cabin.name = req.query.name;
+		cabin.name = req.body.name;
 		cabin.points = 0;
-		cabin.members = req.query.members;
-		cabin.icon = req.query.icon
+		cabin.members = req.body.members;
+		cabin.icon = req.body.icon
 	   
 		cabin.save(function(err) {
 	    	if (err)
@@ -62,9 +61,9 @@ router.route('/cabins/:id')
 		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
 
-			if (req.query.name) cabin.name = req.query.name;
-			if (req.query.points) cabin.points = req.query.points;
-			if (req.query.members) cabin.members = req.query.members;
+			if (req.body.name) cabin.name = req.body.name;
+			if (req.body.points) cabin.points = req.body.points;
+			if (req.body.members) cabin.members = req.body.members;
 
 			cabin.save(function(err) {
 				if (err) return res.send(err);

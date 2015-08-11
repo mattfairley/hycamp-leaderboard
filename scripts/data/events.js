@@ -15,7 +15,7 @@ HYC.data.events = {
 	    return qwest.delete('api/events/' + id);
 	},
 
-	edit: function(id) {
+	edit: function(id, data) {
 	    return qwest.post('api/events/' + id);
 	},
 

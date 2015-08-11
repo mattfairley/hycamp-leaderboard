@@ -14,6 +14,7 @@ module.exports = function() {
 
 		event: mongoose.model('event', {
 			id: {type: Schema.Types.ObjectId},
+			name: String,
 			location: String,
 			description: String,
 			time: {type: Date, default: Date.now}

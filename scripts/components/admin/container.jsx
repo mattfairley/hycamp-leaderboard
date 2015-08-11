@@ -19,9 +19,13 @@ UI.admin.container = React.createClass({
 
 	    var route = HYC.router.rr.recognize(loc);
 
+	    console.log(route);
+
 	    if(route){
 	        console.info('[UI.admin.container] New route found', loc, route);
-	        route[0].handler(body, route[0].params);
+	        route[0].handler(body, route.queryParams);
+	        // TODO: Look at docs to find out how to pass params to route
+	        // route[0].handler(body, route[0].params);
 	    }else{
 	        console.error('[UI.admin.container] No route found', loc);
 	    }
@@ -43,7 +47,7 @@ UI.admin.container = React.createClass({
 
 		return(
 			<div id='admin-container' className='body-container'>
-
+				
 			</div>
 
 		);

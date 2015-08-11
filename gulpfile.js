@@ -29,7 +29,7 @@ var nodemon = require('gulp-nodemon');
 //Error handling that will return an error, but not break the watch task
 var onError = function(err) {
     gutil.beep();
-    console.log(err);
+    console.err(err.message);
     this.emit('end');
 }
 

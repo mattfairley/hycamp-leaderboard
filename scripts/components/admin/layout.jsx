@@ -19,6 +19,7 @@ UI.admin.layout = React.createClass({
 				<UI.admin.nav />
 			</header>
 			<UI.admin.container />
+			<div id="modal"></div>
 		</div>;
 	}
 

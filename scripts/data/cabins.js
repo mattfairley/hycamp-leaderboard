@@ -15,8 +15,8 @@ HYC.data.cabins = {
 	    return qwest.delete('api/cabins/' + id);
 	},
 
-	edit: function(id) {
-	    return qwest.post('api/cabins/' + id);
+	edit: function(id, data) {
+	    return qwest.post('api/cabins/' + id, data);
 	},
 
 	details: function(id) {

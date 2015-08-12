@@ -28,6 +28,10 @@ UI.admin.page.events = {
     		});
     	},
 
+    	openModal: function() {
+    		UI.admin.modal.cabin.open();
+    	},
+
     	render: function() {
     		console.log('Rendering', this.state.events);
     		var events = this.state.events.map(function(event) {

@@ -5,15 +5,23 @@ if (typeof(UI.admin.modal) === 'undefined') UI.admin.modal = {};
 UI.admin.modal.cabin = {
 
 	open(id, cabin) {
+		var self = this;
 		cabin = cabin || {};
 		var modal = document.getElementById('modal');
 		HYC.addClass(modal, 'is-visible');
-		React.render(<UI.admin.modal.cabin.element cabin={cabin} id={id}/>, modal);	
+		React.render(<UI.admin.modal.cabin.element cabin={cabin} id={id}/>, modal);
+		// close on click outside container
+		modal.addEventListener('click', function(e){
+			if (e.target === modal) {
+				self.close();
+			}
+		});
 	},
 
 	close() {
 		var modal = document.getElementById('modal');
 		HYC.removeClass(modal, 'is-visible');
+		modal.removeEventListener('click');
 		React.unmountComponentAtNode(modal);
 	},
 

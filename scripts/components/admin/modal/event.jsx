@@ -9,11 +9,17 @@ UI.admin.modal.event = {
 		var modal = document.getElementById('modal');
 		HYC.addClass(modal, 'is-visible');
 		React.render(<UI.admin.modal.event.element event={event} id={id}/>, modal);	
+		modal.addEventListener('click', function(e){
+			if (e.target === modal) {
+				self.close();
+			}
+		});
 	},
 
 	close() {
 		var modal = document.getElementById('modal');
 		HYC.removeClass(modal, 'is-visible');
+		modal.removeEventListener('click');
 		React.unmountComponentAtNode(modal);
 	},
 

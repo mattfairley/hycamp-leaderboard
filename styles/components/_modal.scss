@@ -12,6 +12,7 @@
 	visibility: hidden;
 	transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
 	opacity: 0;
+	z-index: 5;
 	&.is-visible {
 		visibility: visible;
 		transition: opacity 0.2s ease-in-out 0s, visibility 0s linear 0s;
@@ -21,6 +22,7 @@
 
 .modal__wrapper {
 	@include card(5);
+	z-index: 10;
 	max-width: 600px;
 	padding: 20px;
 }

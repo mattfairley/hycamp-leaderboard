@@ -1,0 +1,30 @@
+.icon {
+	width: 50px;
+	&-small {
+		width: 20px;
+	}
+	.fire-main {
+		fill: $red;
+	}
+	.main-stick {
+		fill: $black;
+	}
+
+	.accent-stick {
+		fill: $charcoal;
+	}
+
+	&-mono {
+		.fire-main {
+			fill: $white;
+		}
+		.main-stick {
+			fill: $black;
+
+		}
+		.accent-stick {
+			fill: $black;
+		}
+	}
+
+}

@@ -41,8 +41,10 @@ UI.admin.page.events = {
 
             return (
                 <div className="admin-wrapper">
-                    <h2>Events</h2>
-                    <button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+                    <div className="admin__header">
+                    	<h2>Events</h2>
+                    	<button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+                    </div>
     	            <ul className="event-list">
     	    	        {events}
         	        </ul>

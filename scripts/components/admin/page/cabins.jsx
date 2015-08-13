@@ -39,14 +39,16 @@ UI.admin.page.cabins = {
     	render: function() {
     		console.log('Rendering', this.state.cabins);
     		var cabins = this.state.cabins.map(function(cabin) {
-                return <UI.admin.cabinList cabin={cabin} id={cabin._id} />;
+                return <UI.admin.cabinList cabin={cabin} id={cabin._id} type="edit" />;
             });
 
 
             return (
                 <div className="admin-wrapper">
-                    <h2>Cabins</h2>
-                    <button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+                    <div className="admin__header">
+                    	<h2>Cabins</h2>
+                    	<button className="btn btn-blue" onClick={this.openModal} >Add new</button>
+                    </div>
     	            <ul className="cabin-list">
     	    	        {cabins}
         	        </ul>

@@ -113,8 +113,10 @@ UI.admin.modal.cabin = {
 			return (
 				<div className="modal__wrapper">
 					<div className="modal__container">
-					<i className="fa fa-times" onClick={this.closeModal}></i>
-					<h2 className="modal__header">{headerText}</h2>
+					<i className="fa fa-times modal__close" onClick={this.closeModal}></i>
+					<div className="modal__header">
+						<h2 className="modal__title">{headerText}</h2>
+					</div>
 					{
 						this.state.message ?
 						<p className={'modal__message ' + this.state.messageType}>{this.state.message}</p>
@@ -133,14 +135,14 @@ UI.admin.modal.cabin = {
 							
 						</label>
 						{this.props.id ?
-							<div>
+							<div className="form__btn-container">
 								<button onClick={this.editCabin} className="btn btn-blue">Save
 								</button>
 								<button onClick={this.deleteCabin} className="btn btn-red">Delete
 								</button>
 							</div>
 						:
-							<div>
+							<div className="form__btn-container">
 								<button onClick={this.addCabin} className="btn btn-blue">Add
 								</button>
 							</div>

@@ -1,0 +1,32 @@
+form {
+	display: flex;
+}
+
+.form {
+	flex-flow: column;
+}
+
+.form__label {
+	display: flex;
+	justify-content: space-between;
+	margin: 10px 0;
+	span {
+		display: inline-block;
+		padding-top: 13px;
+		font-weight: 300;
+	}
+}
+
+.form__input {
+	margin-left: 10px;
+	width: 200px;
+}
+
+.form__btn-container {
+	display: flex;
+	justify-content: space-between;
+	margin-left: auto;
+	.btn {
+		margin-left: 10px;
+	}
+}

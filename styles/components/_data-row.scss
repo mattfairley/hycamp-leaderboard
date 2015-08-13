@@ -6,10 +6,17 @@
 	padding: 10px;
 	@include card(1);
 	border-radius: 60px;
+	transition: all 0.3s ease-in-out;
+	&.success {
+		background: rgba($green, 0.7);
+	}
+	&.error {
+		background: rgba($red, 0.4);
+	}
 }
 
 .data-row__title {
-
+	font-size: 20px;
 }
 
 .data-row__info {
@@ -17,6 +24,7 @@
 	flex-grow: 0;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .data-row__icon-container {
@@ -34,4 +42,13 @@
 		background: $blue;
 		cursor: pointer;
 	}
+	&--add {
+		background: $green;
+		cursor: pointer;
+	}
+}
+
+.data-row__input {
+	width: 60px;
+	margin-left: 10px;
 }

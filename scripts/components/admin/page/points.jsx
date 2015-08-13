@@ -16,7 +16,7 @@ UI.admin.page.points = {
 
     element: React.createClass({
     	getInitialState: function() {
-    		return {cabins: []};
+    		return {cabins: [], message: null, messageType: null};
     	},
 
     	componentWillMount: function() {
@@ -30,9 +30,17 @@ UI.admin.page.points = {
 
     	render: function() {
     		console.log('Rendering', this.state.cabins);
+    		var cabin = this.state.cabins.map(cabin => {
+    			return <UI.admin.cabinList type="add" cabin={cabin} id={cabin._id} />;
+    		});
     		return (
     			<div className="cabin-list">
-    				<h2>Points</h2>
+    				<div className="admin__header">
+    					<h2>Points</h2>
+    				</div>
+    				<ul className="points-list">
+    					{cabin}
+    				</ul>
     			</div>
     			);
     	}

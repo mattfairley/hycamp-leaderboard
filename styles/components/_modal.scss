@@ -28,4 +28,30 @@
 	opacity: 1;
 	background: $white;
 	border: 1px solid $divider;
+	position: relative;
+}
+
+.modal__close {
+	position: absolute;
+	padding: 20px;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.modal__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 10px;
+}
+
+.modal__message {
+	padding: 10px;
+	&.success {
+		background: rgba($green, 0.4);
+	}
+	&.error {
+		background: rgba($red, 0.4);
+	}
 }

@@ -1,0 +1,37 @@
+.data-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+	padding: 10px;
+	@include card(1);
+	border-radius: 60px;
+}
+
+.data-row__title {
+
+}
+
+.data-row__info {
+	flex-basis: 50%;
+	flex-grow: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.data-row__icon-container {
+	background: $red;
+	color: white;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	border-radius: 50%;
+	@include card(1);
+	&--edit {
+		background: $blue;
+		cursor: pointer;
+	}
+}

@@ -64,6 +64,7 @@ router.route('/cabins/:id')
 			if (req.body.name) cabin.name = req.body.name;
 			if (req.body.points) cabin.points = req.body.points;
 			if (req.body.members) cabin.members = req.body.members;
+			if (req.body.icon) cabin.icon = req.body.icon;
 
 			cabin.save(function(err) {
 				if (err) return res.send(err);

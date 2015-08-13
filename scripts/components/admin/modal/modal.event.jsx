@@ -2,15 +2,13 @@ if (typeof(UI) === 'undefined') var UI = {};
 if (typeof(UI.admin) === 'undefined') UI.admin = {};
 if (typeof(UI.admin.modal) === 'undefined') UI.admin.modal = {};
 
-UI.admin.modal.cabin = {
+UI.admin.modal.event = {
 
-	open(id, cabin) {
-		var self = this;
-		cabin = cabin || {};
+	open(id, event) {
+		event = event || {};
 		var modal = document.getElementById('modal');
 		HYC.addClass(modal, 'is-visible');
-		React.render(<UI.admin.modal.cabin.element cabin={cabin} id={id}/>, modal);
-		// close on click outside container
+		React.render(<UI.admin.modal.event.element event={event} id={id}/>, modal);	
 		modal.addEventListener('click', function(e){
 			if (e.target === modal) {
 				self.close();
@@ -42,73 +40,74 @@ UI.admin.modal.cabin = {
 			UI.admin.modal.cabin.close();
 		},
 
-		deleteCabin(e) {
+		deleteEvent(e) {
 			e.preventDefault();
 			var self = this;
-			HYC.data.cabins.delete(this.props.id).then(function(res, data){
+			HYC.data.events.delete(this.props.id).then(function(res, data){
     			self.setState({
-    				message: 'Cabin successfully deleted',
+    				message: 'Event successfully deleted',
     				messageType: 'error'
     			});
     			//TODO show successful delete message
     		}).catch(function(err){
-    			console.error('Error deleting cabin', err);
+    			console.error('Error deleting event', err);
     		});
 		},
 
-		editCabin(e) {
+		editEvent(e) {
 			e.preventDefault();
 	
 			var self = this;
 			var form = document.getElementById('form');
 			var id = this.props.id;
 			var name = document.getElementById('name').value;
-			var icon = document.getElementById('icon').value;
-			var members = document.getElementById('members').value.split(',');
-			members = members.map(member => member.trim());
+			var location  = document.getElementById('location').value;
+			var description  = document.getElementById('description').value;
+			var time  = document.getElementById('time').value;
 			var data = {
 				name: name,
-				icon: icon,
-				members: members
+				location: location,
+				description: description,
+				time: time
 			};
-			HYC.data.cabins.edit(id, data).then(function(res, data){
+			HYC.data.events.edit(id, data).then(function(res, data){
     			self.setState({
-    				message: 'Cabin successfully updated',
+    				message: 'Event successfully updated',
     				messageType: 'success'
     			});
     			//TODO show successful edit message
     		}).catch(function(err){
-    			console.error('Error getting cabin list', err);
+    			console.error('Error getting event list', err);
     		});
 		},
 
-		addCabin(e) {
+		addEvent(e) {
 			e.preventDefault();
 	
 			var self = this;
 			var name = document.getElementById('name').value;
-			var icon = document.getElementById('icon').value;
-
-			var members = document.getElementById('members').value.split(',');
-			members = members.map(member => member.trim());
+			var location  = document.getElementById('location').value;
+			var description  = document.getElementById('description').value;
+			var time  = document.getElementById('time').value;
 			var data = {
 				name: name,
-				icon: icon,
-				members: members
+				location: location,
+				description: description,
+				time: time
 			};
-			HYC.data.cabins.add(data).then(function(res, data){
+			HYC.data.events.add(data).then(function(res, data){
     			self.setState({
-    				message: 'Added cabin successfully',
+    				message: 'Added event successfully',
     				messageType: 'success'
     			});
     			//TODO show successful add message
     		}).catch(function(err){
-    			console.error('Error getting cabin list', err);
+    			console.error('Error getting event list', err);
     		});
 		},
 
 		render: function() {
-			var headerText = this.props.id ? 'Edit Cabin' : 'Add Cabin';
+			var headerText = this.props.id ? 'Edit Event' : 'Add Event';
 
 			return (
 				<div className="modal__wrapper">
@@ -123,25 +122,28 @@ UI.admin.modal.cabin = {
 					}
 					<form className="form" id="form">
 						<label for="name" className="form__label">Name
-							<input type="text" className="form__input" name="name" id="name"  defaultValue={this.props.cabin.name}/>
+							<input type="text" className="form__input" name="name" id="name"  defaultValue={this.props.event.name}/>
 						</label>
-						<label for="icon" className="form__label">Icon
-							<input type="text" className="form__input" name="icon" id="icon"  defaultValue={this.props.cabin.icon} />
+						<label for="location" className="form__label">Location
+							<input type="text" className="form__input" name="location" id="location"  defaultValue={this.props.event.location} />
 						</label>
 						<label for="members" className="form__label">Members
-							<textarea className="form__input" name="members" id="members" defaultValue={this.props.cabin.members} />
+							<textarea className="form__input" name="members" id="members" defaultValue={this.props.event.members} />
 							
+						</label>
+						<label for="location" className="form__label">Time
+							<input type="text" className="form__input" name="time" id="time"  defaultValue={this.props.event.time} />
 						</label>
 						{this.props.id ?
 							<div>
-								<button onClick={this.editCabin} className="btn btn-blue">Edit
+								<button onClick={this.editEvent} className="btn btn-blue">Save
 								</button>
-								<button onClick={this.deleteCabin} className="btn btn-red">Delete
+								<button onClick={this.deleteEvent} className="btn btn-red">Delete
 								</button>
 							</div>
 						:
 							<div>
-								<button onClick={this.addCabin} className="btn btn-blue">Add
+								<button onClick={this.addEvent} className="btn btn-blue">Add
 								</button>
 							</div>
 						}

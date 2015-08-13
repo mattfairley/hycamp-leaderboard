@@ -39,7 +39,7 @@ UI.admin.page.cabins = {
     	render: function() {
     		console.log('Rendering', this.state.cabins);
     		var cabins = this.state.cabins.map(function(cabin) {
-                return <UI.admin.cabin cabin={cabin} id={cabin._id} />;
+                return <UI.admin.cabinList cabin={cabin} id={cabin._id} />;
             });
 
 

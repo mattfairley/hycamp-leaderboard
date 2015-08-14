@@ -123,17 +123,17 @@ UI.admin.modal.event = {
 						null
 					}
 					<form className="form" id="form">
-						<label for="name" className="form__label">Name
+						<label htmlFor="name" className="form__label">Name
 							<input type="text" className="form__input" name="name" id="name"  defaultValue={this.props.event.name}/>
 						</label>
-						<label for="location" className="form__label">Location
+						<label htmlFor="location" className="form__label">Location
 							<input type="text" className="form__input" name="location" id="location"  defaultValue={this.props.event.location} />
 						</label>
-						<label for="members" className="form__label">Members
+						<label htmlFor="members" className="form__label">Members
 							<textarea className="form__input" name="members" id="members" defaultValue={this.props.event.members} />
 							
 						</label>
-						<label for="location" className="form__label">Time
+						<label htmlFor="location" className="form__label">Time
 							<input type="text" className="form__input" name="time" id="time"  defaultValue={this.props.event.time} />
 						</label>
 						{this.props.id ?

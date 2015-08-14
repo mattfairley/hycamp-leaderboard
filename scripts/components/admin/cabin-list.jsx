@@ -19,14 +19,10 @@ UI.admin.cabinList = React.createClass({
 		console.log(toadd, this.props.cabin.points);
 		var data = {points: this.props.cabin.points + toadd};
 			HYC.data.cabins.edit(this.props.cabin._id, data).then(function(res, data){
-    			self.setState({
-    				messageType: 'success'
-    			});
+				HYC.events.publish('cabinChanged',
+					{type: 'success', message: 'Points successfully added'}
+				);
     			pointsInput.value = null;
-    			window.setTimeout(function(){
-    				self.setState({messageType: null});
-    			}, 1000)
-    			//TODO show successful edit message
     		}).catch(function(err){
     			console.error('Error adding points', err);
     			self.setState({
@@ -37,9 +33,8 @@ UI.admin.cabinList = React.createClass({
 
 	render: function() {
 		var cabin = this.props.cabin;
-		var successStyle = this.state.messageType;
 		return (
-			<div className={"data-row " + this.state.messageType} id={cabin._id}>
+			<div className={'data-row '+this.props.type} id={cabin._id}>
 				<div className="data-row__icon-container">
 					<i className={'fa ' + cabin.icon}></i>
 				</div>
@@ -52,8 +47,8 @@ UI.admin.cabinList = React.createClass({
 					}
 					{
 						this.props.type === 'add' ?
-						<label for="number" className="datarow__label">
-    						<input className="data-row__input" type="number" name="number" id={cabin._id + 'number'}/>
+						<label htmlFor="number" className="datarow__label">
+    						<input className="data-row__input" step="5" min="0"type="number" name="number" id={cabin._id + 'number'}/>
     					</label>
     					:
     					null

@@ -46,10 +46,11 @@ UI.admin.modal.cabin = {
 			e.preventDefault();
 			var self = this;
 			HYC.data.cabins.delete(this.props.id).then(function(res, data){
-    			self.setState({
+    			HYC.events.publish('cabinChanged', {
     				message: 'Cabin successfully deleted',
-    				messageType: 'error'
+    				type: 'success'
     			});
+    			self.closeModal();
     			//TODO show successful delete message
     		}).catch(function(err){
     			console.error('Error deleting cabin', err);
@@ -76,6 +77,7 @@ UI.admin.modal.cabin = {
     				message: 'Cabin successfully updated',
     				messageType: 'success'
     			});
+    			HYC.events.publish('cabinChanged', {});
     			//TODO show successful edit message
     		}).catch(function(err){
     			console.error('Error getting cabin list', err);
@@ -97,10 +99,11 @@ UI.admin.modal.cabin = {
 				members: members
 			};
 			HYC.data.cabins.add(data).then(function(res, data){
-    			self.setState({
-    				message: 'Added cabin successfully',
-    				messageType: 'success'
+    			HYC.events.publish('cabinChanged', {
+    				message: 'Cabin successfully added',
+    				type: 'success'
     			});
+    			self.closeModal();
     			//TODO show successful add message
     		}).catch(function(err){
     			console.error('Error getting cabin list', err);
@@ -124,13 +127,13 @@ UI.admin.modal.cabin = {
 						null
 					}
 					<form className="form" id="form">
-						<label for="name" className="form__label">Name
+						<label htmlFor="name" className="form__label">Name
 							<input type="text" className="form__input" name="name" id="name"  defaultValue={this.props.cabin.name}/>
 						</label>
-						<label for="icon" className="form__label">Icon
+						<label htmlFor="icon" className="form__label">Icon
 							<input type="text" className="form__input" name="icon" id="icon"  defaultValue={this.props.cabin.icon} />
 						</label>
-						<label for="members" className="form__label">Members
+						<label htmlFor="members" className="form__label">Members
 							<textarea className="form__input" name="members" id="members" defaultValue={this.props.cabin.members} />
 							
 						</label>

@@ -40,7 +40,7 @@ router.route('/cabins')
 	    	if (err)
 	        	return res.send(err);
 
-	    	res.json({ message: 'cabin created' });
+	    	res.json({ message: 'cabin created', data: cabin });
 		});
 	})
 

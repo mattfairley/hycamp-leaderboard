@@ -34,11 +34,11 @@ UI.admin.nav = React.createClass({
 
 		return(
 			<ul className="navmenu">
-				{this.navItems.map((item) => {
+				{this.navItems.map((item, i) => {
 					var style = 'navmenu__item';
 					if (self.state.currentSection === item.text)
 						style += ' is-active';
-					return <li className={style}><a href={item.link} className="navmenu__link">{item.text}</a></li>;
+					return <li className={style} key={i}><a href={item.link} className="navmenu__link">{item.text}</a></li>;
 				})
 				}
 

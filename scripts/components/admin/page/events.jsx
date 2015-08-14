@@ -35,7 +35,7 @@ UI.admin.page.events = {
     	render: function() {
     		console.log('Rendering', this.state.events);
     		var events = this.state.events.map(function(event) {
-                return <UI.admin.event event={event} id={event._id} />;
+                return <UI.admin.event event={event} key={event._id} />;
             });
 
 

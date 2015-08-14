@@ -7,7 +7,7 @@ UI.section.leaderboard = {
     render(container, params) {
     	console.info('[UI.section.leaderboard] rendering section');
     	React.render(<UI.section.leaderboard.element />, container);
-    	HYC.events.publish('sectionChange', {section: 'Cabins'});
+    	HYC.events.publish('sectionChange', {section: 'Leaderboard'});
     },
 
     element: React.createClass({
@@ -27,7 +27,7 @@ UI.section.leaderboard = {
     	render() {
     		console.log('Rendering', this.state.cabins);
     		var cabins = this.state.cabins.map(cabin => {
-    			return <UI.common.cabinList cabin={cabin} key={cabin._id} />
+    			return <UI.common.cabinList cabin={cabin} key={cabin._id} />;
     		});
 
     		return (
@@ -37,7 +37,7 @@ UI.section.leaderboard = {
     				</ul>
     			</div>
 
-    		)
+    		);
     	}
     })
 

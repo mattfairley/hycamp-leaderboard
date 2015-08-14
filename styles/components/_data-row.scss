@@ -48,6 +48,12 @@
 }
 
 .data-row.add {
+	.data-row__input {
+		padding: 10px;
+	}
+}
+
+@media screen and (max-width: $smallest) {
 	.data-row__icon-container {
 		width: 40px;
 		height: 40px;
@@ -59,8 +65,5 @@
 	}
 	.data-row__title {
 		font-size: 16px;
-	}
-	.data-row__input {
-		padding: 10px;
 	}
 }

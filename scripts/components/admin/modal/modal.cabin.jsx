@@ -65,12 +65,14 @@ UI.admin.modal.cabin = {
 			var id = this.props.id;
 			var name = document.getElementById('name').value;
 			var icon = document.getElementById('icon').value;
+			var points = Number(document.getElementById('points').value);
 			var members = document.getElementById('members').value.split(',');
 			members = members.map(member => member.trim());
 			var data = {
 				name: name,
 				icon: icon,
-				members: members
+				members: members,
+				points: points
 			};
 			HYC.data.cabins.edit(id, data).then(function(res, data){
     			self.setState({
@@ -78,7 +80,6 @@ UI.admin.modal.cabin = {
     				messageType: 'success'
     			});
     			HYC.events.publish('cabinChanged', {});
-    			//TODO show successful edit message
     		}).catch(function(err){
     			console.error('Error getting cabin list', err);
     		});
@@ -133,6 +134,16 @@ UI.admin.modal.cabin = {
 						<label htmlFor="icon" className="form__label">Icon
 							<input type="text" className="form__input" name="icon" id="icon"  defaultValue={this.props.cabin.icon} />
 						</label>
+						{this.props.id ?
+							<label htmlFor="points" className="form__label">Points
+								<input type="number" min="0" step="5" className="form__input" name="points" id="points" defaultValue={this.props.cabin.points} />
+								
+							</label>
+
+							:
+							null
+
+						}
 						<label htmlFor="members" className="form__label">Members
 							<textarea className="form__input" name="members" id="members" defaultValue={this.props.cabin.members} />
 							

@@ -36,7 +36,7 @@ var onError = function(err) {
 //Define paths
 var paths = {
 	dest: 'compiled/',
-	js: ['scripts/*.js', 'scripts/**/*.js', 'scripts/**/*.jsx', 'scripts/*.jsx'],
+	js: ['scripts/*.jsx', 'scripts/*.js', 'scripts/**/*.js', 'scripts/**/*.jsx'],
 	jsDest: 'compiled/*.js',
 	lib: 'lib/*.js',
 	scss: 'styles/main.scss',

@@ -1,7 +1,3 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-if (typeof(UI.admin.modal) === 'undefined') UI.admin.modal = {};
-
 UI.admin.modal.cabin = {
 
 	open(id, cabin) {
@@ -27,18 +23,18 @@ UI.admin.modal.cabin = {
 
 	element: React.createClass({
 
-		getInitialState: function() {
+		getInitialState() {
 			return {
 				message: null,
 				messageType: null
 			};
 		},
 
-		componentWillMount: function() {
+		componentWillMount() {
 
 		},
 
-		closeModal: function() {
+		closeModal() {
 			UI.admin.modal.cabin.close();
 		},
 
@@ -111,7 +107,7 @@ UI.admin.modal.cabin = {
     		});
 		},
 
-		render: function() {
+		render() {
 			var headerText = this.props.id ? 'Edit Cabin' : 'Add Cabin';
 
 			return (

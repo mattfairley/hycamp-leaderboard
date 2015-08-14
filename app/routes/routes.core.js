@@ -10,8 +10,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function (req, res){
-	console.log('we here');
-	res.render('index', { title: 'HackerYou.camp', message: 'This is a real website'});
+	res.render('index', { title: 'HackerYou.camp'});
 })
 
 // GET TO ROUTIN'

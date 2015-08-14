@@ -1,6 +1,3 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-
 UI.admin.nav = React.createClass({
 
 	subSectionChange: null,

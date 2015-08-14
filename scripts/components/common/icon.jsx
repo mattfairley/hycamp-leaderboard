@@ -1,9 +1,6 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.common) === 'undefined') UI.common = {};
-
 UI.common.icon = React.createClass({
 
-	render: function() {
+	render() {
 		return (
 			<svg x="0px" y="0px" viewBox="0 0 126.1 186.6" enable-background="new 0 0 126.1 186.6">
 			

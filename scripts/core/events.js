@@ -1,5 +1,3 @@
-if (typeof(HYC) === 'undefined') var HYC = {};
-
 HYC.events = (function () {
     var topics = {};
     var hOP = topics.hasOwnProperty;

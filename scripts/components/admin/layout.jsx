@@ -1,9 +1,6 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-
 UI.admin.layout = React.createClass({
 
-	getInitialState: function() {
+	getInitialState() {
 		return {title: 'HYCamp Admin'};
 	},
 
@@ -12,7 +9,7 @@ UI.admin.layout = React.createClass({
 
 	// },
 
-	render: function() {
+	render() {
 		return <div className="page-wrapper">
 			<header>
 

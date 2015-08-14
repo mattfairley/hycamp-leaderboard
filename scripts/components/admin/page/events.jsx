@@ -1,25 +1,21 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-if (typeof(UI.admin.page) === 'undefined') UI.admin.page = {};
-
 UI.admin.page.events = {
-	register: function(){
+	register(){
         console.info('[UI.admin.page.events] register route');
         HYC.router.rr.add([{ path: '/events', handler: UI.admin.page.events.render }]);
     },
 
-    render: function(container, params){
+    render(container, params){
         console.info('[UI.admin.page.events] rendering page');
         React.render(<UI.admin.page.events.element />, container);
         HYC.events.publish('sectionChange', {section: 'Events'});
     },
 
     element: React.createClass({
-    	getInitialState: function() {
+    	getInitialState() {
     		return {events: []};
     	},
 
-    	componentWillMount: function() {
+    	componentWillMount() {
     		var self = this;
     		HYC.data.events.list().then(function(res, data){
     			self.setState({events: data.results});
@@ -28,11 +24,11 @@ UI.admin.page.events = {
     		});
     	},
 
-    	openModal: function() {
+    	openModal() {
     		UI.admin.modal.cabin.open();
     	},
 
-    	render: function() {
+    	render() {
     		console.log('Rendering', this.state.events);
     		var events = this.state.events.map(function(event) {
                 return <UI.admin.event event={event} key={event._id} />;

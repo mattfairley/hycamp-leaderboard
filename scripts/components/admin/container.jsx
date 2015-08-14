@@ -1,11 +1,8 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-
 UI.admin.container = React.createClass({
 
 	_eventHashchange: null,
 
-	getInitialState: function() {
+	getInitialState() {
 	    return {
 	        title: 'Loading...',
 	        navigation: '#',
@@ -13,13 +10,11 @@ UI.admin.container = React.createClass({
 	    };
 	},
 
-	urlDidChange: function(location){
+	urlDidChange(location){
 	    var loc = location.charAt(0) === '#' ? location.substr(1) : location;
 	    var body = document.getElementById('admin-container');
 
 	    var route = HYC.router.rr.recognize(loc);
-
-	    console.log(route);
 
 	    if(route){
 	        console.info('[UI.admin.container] New route found', loc, route);
@@ -31,19 +26,18 @@ UI.admin.container = React.createClass({
 	    }
 	},
 
-	componentDidMount: function() {
+	componentDidMount() {
 	    // Subscribe to events
 	    this._eventHashchange = HYC.events.subscribe('hashchange', this.urlDidChange);
 	    this.urlDidChange(window.location.hash);
 
 	},
 
-	componentWillUnmount: function(){
+	componentWillUnmount(){
 	    this._eventHashchange.remove();
 	},
 
-	render: function(){
-		var self = this;
+	render(){
 
 		return(
 			<div id='admin-container' className='body-container'>

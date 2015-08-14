@@ -1,7 +1,3 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-if (typeof(UI.admin.page) === 'undefined') UI.admin.page = {};
-
 UI.admin.page.points = {
 	register(){
         console.info('[UI.admin.page.points] register route');

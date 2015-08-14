@@ -1,7 +1,3 @@
-if (typeof(UI) === 'undefined') var UI = {};
-if (typeof(UI.admin) === 'undefined') UI.admin = {};
-if (typeof(UI.admin.page) === 'undefined') UI.admin.page = {};
-
 UI.admin.page.cabins = {
 	register(){
         console.info('[UI.admin.page.cabins] register route');
@@ -57,7 +53,7 @@ UI.admin.page.cabins = {
 
     	render() {
     		console.log('Rendering', this.state.cabins);
-    		var cabins = this.state.cabins.map(function(cabin) {
+    		var cabins = this.state.cabins.map(cabin => {
                 return <UI.admin.cabinList cabin={cabin} key={cabin._id} type="edit" />;
             });
 

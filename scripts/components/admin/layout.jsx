@@ -13,7 +13,7 @@ UI.admin.layout = React.createClass({
 		return <div className="page-wrapper">
 			<header>
 
-				<div className="icon icon-small icon-mono"><UI.common.icon /></div>
+				<UI.common.icon size="small" style="mono" />
 				<h1 className="site-title">{this.state.title}</h1>
 				<UI.admin.nav />
 			</header>

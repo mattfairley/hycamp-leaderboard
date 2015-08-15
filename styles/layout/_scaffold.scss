@@ -1,5 +1,6 @@
 .page-wrapper {
 	min-height: 100%;
+	max-height: 100%;
 	display: flex;
 	flex-flow: column wrap;
 	align-items: stretch;
@@ -16,17 +17,22 @@
 }
 
 .body-container {
-	padding: 20px;
 	position: relative;
 	display: flex;
-	flex-grow: 1;
+	flex: 1;
 	justify-content: center;
+	overflow: hidden;
 }
 
 .admin-wrapper, .section-wrapper {
 	margin: 0 auto;
 	max-width: 800px;
 	flex: 1;
+	padding: 20px;
+	overflow-y: auto;
+	@media screen and (max-width: $smallest) {
+		padding: 10px;
+	}
 }
 
 .admin__header {
@@ -40,4 +46,18 @@
 	display: flex;
 	flex-flow: column;
 	width: 100%;
+}
+
+.logo-topbar {
+	display: none;
+	background: $red;
+	// background: $white;
+	border-bottom: $divider;
+	@include card(2);
+	padding: 5px;
+	justify-content: center;
+	align-items: center;
+	@media screen and (max-width: $smallest) {
+		display: flex;
+	}
 }

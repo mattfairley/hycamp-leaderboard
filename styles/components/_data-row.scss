@@ -40,6 +40,10 @@
 		background: $green;
 		cursor: pointer;
 	}
+	&--rank {
+		background: $charcoal;
+		margin-right: 10px;
+	}
 }
 
 .data-row__input {
@@ -53,7 +57,7 @@
 	}
 }
 
-@media screen and (max-width: $smallest) {
+@media screen and (max-width: $small) {
 	.data-row__icon-container {
 		width: 40px;
 		height: 40px;

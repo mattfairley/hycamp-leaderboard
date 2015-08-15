@@ -1,7 +1,8 @@
 .page-wrapper {
 	min-height: 100%;
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: column wrap;
+	align-items: stretch;
 }
 
 .content-wrapper {
@@ -17,11 +18,15 @@
 .body-container {
 	padding: 20px;
 	position: relative;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
 }
 
-.admin-wrapper {
-	max-width: 900px;
+.admin-wrapper, .section-wrapper {
 	margin: 0 auto;
+	max-width: 800px;
+	flex: 1;
 }
 
 .admin__header {
@@ -34,4 +39,5 @@
 .cabin-list, .event-list {
 	display: flex;
 	flex-flow: column;
+	width: 100%;
 }

@@ -3,7 +3,7 @@ UI.admin.nav = React.createClass({
 	subSectionChange: null,
 	navItems: [
 		{text: 'Points', icon: 'fa-trophy', link: '#'},
-		{text: 'Cabins', icon: 'fa-home', link: '#cabins'},
+		{text: 'Cabins', icon: 'fa-bed', link: '#cabins'},
 		{text: 'Events', icon: 'fa-calendar-o', link: '#events'}
 	],
 

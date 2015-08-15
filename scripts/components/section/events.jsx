@@ -31,7 +31,7 @@ UI.section.events = {
     		});
 
     		return (
-    			<div className="events">
+    			<div className="section-wrapper">
     				<ul className="event-list">
     					{events}
     				</ul>

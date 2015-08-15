@@ -51,7 +51,7 @@ UI.admin.page.points = {
     			return <UI.admin.cabinList type="add" cabin={cabin} key={cabin._id} />;
     		});
     		return (
-    			<div className="cabin-list">
+    			<div className="admin-wrapper">
     				{
 						this.state.message ?
 						<p className={'modal__message ' + this.state.messageType}>{this.state.message}</p>

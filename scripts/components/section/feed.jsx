@@ -7,13 +7,13 @@ UI.section.feed = {
     render(container, params) {
     	console.info('[UI.section.feed] rendering section');
     	React.render(<UI.section.feed.element />, container);
-    	HYC.feed.publish('sectionChange', {section: 'Feed'});
+    	HYC.events.publish('sectionChange', {section: 'Feed'});
     },
 
     element: React.createClass({
     	render() {
     		return (
-    			<div className="feed">
+    			<div className="section-wrapper">
     				<h2>Feed</h2>
     			</div>
     		);

@@ -31,7 +31,7 @@ UI.section.leaderboard = {
     		});
 
     		return (
-    			<div className="leaderboard">
+    			<div className="section-wrapper">
     				<ul className="cabin-list">
     					{cabins}
     				</ul>

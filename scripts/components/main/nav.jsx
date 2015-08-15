@@ -3,7 +3,7 @@ UI.main.nav = React.createClass({
 	subSectionChange: null,
 	navItems: [
 		{text: 'Leaderboard', icon: 'fa-trophy', link: '#'},
-		{text: 'Feed', icon: 'fa-home', link: '#feed'},
+		{text: 'Feed', icon: 'fa-newspaper-o', link: '#feed'},
 		{text: 'Events', icon: 'fa-calendar-o', link: '#events'}
 	],
 
@@ -38,11 +38,11 @@ UI.main.nav = React.createClass({
 						style += ' is-active';
 					return <li className={style} key={i}>
 						<a href={item.link} className="navmenu__link">
-						{leaderboard ?
+						{/*leaderboard ?
 							<div className="icon icon-small"><UI.common.icon /></div>
 							:
+						*/}
 							<i className={'navmenu__icon fa ' + item.icon}></i>
-						}
 							<span>{item.text}</span>
 						</a>
 						</li>;

@@ -41,7 +41,6 @@ UI.main.container = React.createClass({
 
 		return(
 			<div id='body-container' className='body-container'>
-				
 			</div>
 
 		);

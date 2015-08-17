@@ -24,7 +24,6 @@
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
-    "gulp-flowtype": "^0.4.7",
     "gulp-if": "^1.2.5",
     "gulp-jshint": "^1.11.2",
     "gulp-nodemon": "^2.0.3",

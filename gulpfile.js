@@ -19,7 +19,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var react = require('gulp-react');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
-var flow = require('gulp-flowtype');
 
 // server & watch
 var browserSync = require('browser-sync');
@@ -69,13 +68,6 @@ gulp.task('lib', function(){
 
 gulp.task('lint', function(){
     return gulp.src(paths.js)
-        .pipe(flow({
-            all: true,
-            weak: false,
-            killFlow: false,
-            beep: true,
-            abort: true
-        }))
         .pipe(jshint({ esnext: true, linter: require('jshint-jsx').JSXHINT}))
         .pipe(jshint.reporter('jshint-stylish'));
 });

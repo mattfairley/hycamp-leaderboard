@@ -33,17 +33,18 @@ UI.admin.modal.event = {
 		},
 
 		closeModal() {
-			UI.admin.modal.cabin.close();
+			UI.admin.modal.event.close();
 		},
 
 		deleteEvent(e) {
 			e.preventDefault();
 			var self = this;
 			HYC.data.events.delete(this.props.id).then(function(res, data){
-    			self.setState({
+    			HYC.events.publish('eventChanged', {
     				message: 'Event successfully deleted',
-    				messageType: 'error'
+    				type: 'success'
     			});
+    			self.closeModal();
     			//TODO show successful delete message
     		}).catch(function(err){
     			console.error('Error deleting event', err);
@@ -92,10 +93,11 @@ UI.admin.modal.event = {
 				time: time
 			};
 			HYC.data.events.add(data).then(function(res, data){
-    			self.setState({
-    				message: 'Added event successfully',
-    				messageType: 'success'
+    			HYC.events.publish('eventChanged', {
+    				message: 'Event successfully added',
+    				type: 'success'
     			});
+    			self.closeModal();
     			//TODO show successful add message
     		}).catch(function(err){
     			console.error('Error getting event list', err);
@@ -103,6 +105,7 @@ UI.admin.modal.event = {
 		},
 
 		render() {
+			var parsedTime = this.props.id ? moment(this.props.event.time).format('MMM DD HH:mm') : null;
 			var headerText = this.props.id ? 'Edit Event' : 'Add Event';
 
 			return (
@@ -125,15 +128,15 @@ UI.admin.modal.event = {
 						<label htmlFor="location" className="form__label">Location
 							<input type="text" className="form__input" name="location" id="location"  defaultValue={this.props.event.location} />
 						</label>
-						<label htmlFor="members" className="form__label">Members
-							<textarea className="form__input" name="members" id="members" defaultValue={this.props.event.members} />
+						<label htmlFor="description" className="form__label">Description
+							<textarea className="form__input" name="description" id="description" defaultValue={this.props.event.description} />
 							
 						</label>
 						<label htmlFor="location" className="form__label">Time
-							<input type="text" className="form__input" name="time" id="time"  defaultValue={this.props.event.time} />
+							<input type="text" className="form__input" name="time" id="time"  defaultValue={parsedTime} />
 						</label>
 						{this.props.id ?
-							<div>
+							<div className="form__btn-container">
 								<button onClick={this.editEvent} className="btn btn-blue">Save
 								</button>
 								<button onClick={this.deleteEvent} className="btn btn-red">Delete

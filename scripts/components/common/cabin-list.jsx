@@ -4,7 +4,7 @@ UI.common.cabinList = React.createClass({
 		return {};
 	},
 
-	render: function() {
+	render() {
 		var cabin = this.props.cabin;
 		console.log(this.props);
 		return (

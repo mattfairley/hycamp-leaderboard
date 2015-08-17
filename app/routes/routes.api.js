@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 
 router.use(function(req, res, next){
 	res.contentType('application/json');
@@ -92,8 +93,8 @@ router.route('/events')
 	//get list of events
 	.get(function(req,res){
 		var Event = req.app.get('models').event;
-	    Event.find(function(err, event) {
-	    	var output = {results: event}
+	    Event.find(function(err, events) {
+	    	var output = {results: events}
 	        if (err)
 	            return res.send(err);
 
@@ -104,12 +105,13 @@ router.route('/events')
 	//create new events
 	.post(function(req,res){
 		var Event = req.app.get('models').event;
-		var event = new Event();      
-		event.name = req.query.name;
-		event.location = req.query.location;
-		event.time = req.query.time
-		event.description = req.query.description;
-	   
+		var event = new Event();  
+
+		event.name = req.body.name;
+		event.location = req.body.location;
+		event.time = moment(req.body.time, 'MMM DD HH:mm');
+		event.description = req.body.description;
+	   	console.log(event);
 		event.save(function(err) {
 	    	if (err)
 	        	return res.send(err);
@@ -135,10 +137,10 @@ router.route('/events/:id')
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
 
-			if (req.query.name) event.name = req.query.name;
-			if (req.query.location) event.location = req.query.location;
-			if (req.query.description) event.description = req.query.description;
-			if (req.query.time) event.time = req.query.time;
+			if (req.body.name) event.name = req.body.name;
+			if (req.body.location) event.location = req.body.location;
+			if (req.body.description) event.description = req.body.description;
+			if (req.body.time) event.time = moment(req.body.time, 'MMM DD HH:mm');
 
 			event.save(function(err) {
 				if (err) return res.send(err);

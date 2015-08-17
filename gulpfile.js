@@ -61,7 +61,7 @@ gulp.task('lib', function(){
 	return gulp.src(paths.lib)
 		// .pipe(sourcemaps.init())
 		.pipe(concat('lib.min.js'))
-		.pipe(uglify('lib.min.js'))
+		.pipe(gulpif(argv.prod, uglify('lib.min.js')))
 		// .pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest(paths.dest));
 });

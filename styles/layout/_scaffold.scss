@@ -51,8 +51,7 @@
 .logo-topbar {
 	display: none;
 	background: $red;
-	// background: $white;
-	border-bottom: $divider;
+	// border-bottom: $divider;
 	@include card(2);
 	padding: 5px;
 	justify-content: center;

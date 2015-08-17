@@ -18,20 +18,44 @@ UI.admin.page.events = {
     	componentWillMount() {
     		var self = this;
     		HYC.data.events.list().then(function(res, data){
+    			console.log(data);
     			self.setState({events: data.results});
+    		}).catch(function(err){
+    			console.error('Error getting event list', err);
+    		});
+
+    		this.listUpdated = HYC.events.subscribe('eventChanged', this.updateList);
+    	},
+
+
+    	componentWillUnmount() {
+    		this.listUpdated.remove();
+    	},
+
+    	openModal() {
+    		UI.admin.modal.event.open();
+    	},
+
+    	updateList(message) {
+    		var self = this;
+    		HYC.data.events.list().then(function(res, data){
+    			self.setState({events: data.results, message: message.message, messageType: message.type});
+    			self.messageTimer = window.setTimeout(self.removeMessage, 2000);
     		}).catch(function(err){
     			console.error('Error getting event list', err);
     		});
     	},
 
-    	openModal() {
-    		UI.admin.modal.cabin.open();
+    	removeMessage() {
+    		this.setState({cabins: this.state.cabins});
+    		window.clearTimeout(this.messageTimer);
     	},
+
 
     	render() {
     		console.log('Rendering', this.state.events);
     		var events = this.state.events.map(function(event) {
-                return <UI.admin.event event={event} key={event._id} />;
+                return <UI.admin.eventList event={event} key={event._id} />;
             });
 
 
@@ -41,6 +65,12 @@ UI.admin.page.events = {
                     	<h2>Events</h2>
                     	<button className="btn btn-blue" onClick={this.openModal} >Add new</button>
                     </div>
+                    {
+						this.state.message ?
+						<p className={'modal__message ' + this.state.messageType}>{this.state.message}</p>
+						:
+						null
+					}
     	            <ul className="event-list">
     	    	        {events}
         	        </ul>

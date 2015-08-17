@@ -5,8 +5,20 @@ UI.admin.eventList = React.createClass({
 	},
 
 	render() {
+		var parsedTime = moment(this.props.event.time).format('MMM DD HH:mm');
 		return (
-			<div>{this.props.event.name}{this.props.event.points}<i className="fa fa-edit" onClick={this.openModal}></i></div>
+
+			<div className='data-row'>
+
+				<div className="data-row__info">
+					<div className="data-row__title">{this.props.event.name}</div>
+					{this.props.event.location}{parsedTime}
+				</div>
+
+				<div className="data-row__icon-container data-row__icon-container--edit" onClick={this.openModal}>
+	    			<i className="fa fa-pencil"></i>
+				</div>
+			</div>
 		);
 	}
 

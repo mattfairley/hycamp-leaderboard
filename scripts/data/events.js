@@ -13,7 +13,7 @@ HYC.data.events = {
 	},
 
 	edit: function(id, data) {
-	    return qwest.post('api/events/' + id);
+	    return qwest.post('api/events/' + id, data);
 	},
 
 	details: function(id) {

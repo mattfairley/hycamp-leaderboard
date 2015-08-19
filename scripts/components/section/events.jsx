@@ -26,7 +26,8 @@ UI.section.events = {
 
     	render() {
     		console.log('Rendering', this.state.events);
-    		var events = this.state.events.map(event => {
+    		var events = HYC.sort(this.state.events, 'time', false);
+    		events = this.state.events.map(event => {
     			return <UI.common.eventList event={event} key={event._id} />;
     		});
 

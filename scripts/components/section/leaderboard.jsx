@@ -26,9 +26,9 @@ UI.section.leaderboard = {
 
     	render() {
     		console.log('Rendering', this.state.cabins);
-    		var cabins = HYC.numSort(this.state.cabins, 'points', true);
+    		var cabins = HYC.sort(this.state.cabins, 'points', true);
     		cabins = this.state.cabins.map((cabin, i) => {
-    			return <UI.common.cabinList cabin={cabin} key={cabin._id} rank={i + 1} />;
+    			return <UI.common.cabinList cabin={cabin} key={cabin._id} type="leaderboard" rank={i + 1} />;
     		});
 
     		return (

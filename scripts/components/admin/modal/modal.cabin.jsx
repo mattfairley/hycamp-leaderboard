@@ -140,7 +140,7 @@ UI.admin.modal.cabin = {
 							null
 
 						}
-						<label htmlFor="members" className="form__label">Members
+						<label htmlFor="members" className="form__label">Members (comma separated)
 							<textarea className="form__input" name="members" id="members" defaultValue={this.props.cabin.members} />
 							
 						</label>

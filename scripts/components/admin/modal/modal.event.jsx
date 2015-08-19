@@ -132,7 +132,7 @@ UI.admin.modal.event = {
 							<textarea className="form__input" name="description" id="description" defaultValue={this.props.event.description} />
 							
 						</label>
-						<label htmlFor="location" className="form__label">Time
+						<label htmlFor="location" className="form__label">Time (format: Sep 11 20:00)
 							<input type="text" className="form__input" name="time" id="time"  defaultValue={parsedTime} />
 						</label>
 						{this.props.id ?

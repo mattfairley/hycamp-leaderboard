@@ -4,7 +4,7 @@ UI.common.eventList = React.createClass({
 		var parsedTime = moment(event.time).format('MMM DD HH:mm');
 		return (
 			<div className="event-list">
-				{event.name}{parsedTime}
+				{event.name}
 			</div>
 		);
 	}

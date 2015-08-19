@@ -15,3 +15,11 @@ HYC.sort = function(array, prop, desc) {
 	}
 	return array;
 };
+
+HYC.groupBy = function(array, prop) {
+	return array.reduce(function(memo, x) {
+		if (!memo[x[prop]]) { memo[x[prop]] = []; }
+		memo[x[prop]].push(x);
+		return memo;
+	}, {});
+};

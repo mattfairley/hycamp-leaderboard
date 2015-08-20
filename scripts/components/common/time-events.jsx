@@ -1,6 +1,8 @@
 UI.common.timeEvents = React.createClass({
 	render() {
 
+		console.log(this.props.events);
+
 		var events = this.props.events.map(event => {
 			return <UI.common.eventList event={event} key={event.time}/>;
 		});

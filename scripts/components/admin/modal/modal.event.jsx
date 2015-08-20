@@ -60,11 +60,13 @@ UI.admin.modal.event = {
 			var name = document.getElementById('name').value;
 			var location  = document.getElementById('location').value;
 			var description  = document.getElementById('description').value;
+			var duration = document.getElementById('duration').value;
 			var time  = document.getElementById('time').value;
 			var data = {
 				name: name,
 				location: location,
 				description: description,
+				duration: duration,
 				time: time
 			};
 			HYC.data.events.edit(id, data).then(function(res, data){
@@ -86,10 +88,12 @@ UI.admin.modal.event = {
 			var location  = document.getElementById('location').value;
 			var description  = document.getElementById('description').value;
 			var time  = document.getElementById('time').value;
+			var duration = document.getElementById('duration').value;
 			var data = {
 				name: name,
 				location: location,
 				description: description,
+				duration: duration,
 				time: time
 			};
 			HYC.data.events.add(data).then(function(res, data){
@@ -127,6 +131,9 @@ UI.admin.modal.event = {
 						</label>
 						<label htmlFor="location" className="form__label">Location
 							<input type="text" className="form__input" name="location" id="location"  defaultValue={this.props.event.location} />
+						</label>
+						<label htmlFor="duration" className="form__label">Duration (minutes)
+							<input type="text" className="form__input" name="duration" id="duration"  defaultValue={this.props.event.duration} />
 						</label>
 						<label htmlFor="description" className="form__label">Description
 							<textarea className="form__input" name="description" id="description" defaultValue={this.props.event.description} />

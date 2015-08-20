@@ -109,6 +109,7 @@ router.route('/events')
 
 		event.name = req.body.name;
 		event.location = req.body.location;
+		event.duration = req.body.duration;
 		event.time = moment(req.body.time, 'MMM DD HH:mm');
 		event.description = req.body.description;
 	   	console.log(event);
@@ -136,9 +137,9 @@ router.route('/events/:id')
 		var Event = req.app.get('models').event;
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
-
 			if (req.body.name) event.name = req.body.name;
 			if (req.body.location) event.location = req.body.location;
+			if (req.body.duration) event.duration = Number(req.body.duration);
 			if (req.body.description) event.description = req.body.description;
 			if (req.body.time) event.time = moment(req.body.time, 'MMM DD HH:mm');
 

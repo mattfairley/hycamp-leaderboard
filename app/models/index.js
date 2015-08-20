@@ -17,6 +17,7 @@ module.exports = function() {
 			name: String,
 			location: String,
 			description: String,
+			duration: Number,
 			time: {type: Date, default: Date.now}
 		})
 

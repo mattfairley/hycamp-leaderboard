@@ -6,7 +6,6 @@ body, html {
 body {
 	background: $white;
 	color: $black;
-	font-weight: 300;
 }
 
 a {
@@ -21,7 +20,7 @@ input, textarea {
 	padding: 10px;
 	border: 1px solid $divider;
 	font-size: 16px;
-	font-family: $opensans;
+	font-family: $nimbussans;
 }
 
 textarea {

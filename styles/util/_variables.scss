@@ -1,3 +1,24 @@
+@font-face {
+	font-family: 'Nimbus Sans';
+	src: url('../assets/fonts/NimbusSansNovusDOT-Lig.otf');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nimbus Sans';
+	src: url('../assets/fonts/NimbusSansNovusDOT-Reg.otf');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nimbus Sans';
+	src: url('../assets/fonts/NimbusSansNovusDOT-SemBol.otf');
+	font-weight: 600;
+	font-style: normal;
+}
+
 $blue: #26a6c9;
 $red: #d12026;
 $charcoal: #444345;
@@ -18,7 +39,7 @@ $grey-300: #E0E0E0;
 $grey-100: #F5f5f5;
 $grey-50: #fafafa;
 
-$opensans: 'open sans', sans-serif;
+$nimbussans: 'Nimbus Sans', sans-serif;
 
 $smallest: 480px;
 $small: 600px;

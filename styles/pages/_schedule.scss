@@ -1,0 +1,29 @@
+.event-list {
+
+}
+
+.event-list__day {
+	@include card(1);
+	margin-bottom: 20px;
+	&__title {
+		// text-align: center;
+		padding: 20px;
+	}
+}
+
+.event-list__time {
+	border-top: 1px solid $divider;
+	padding: 20px;
+	&__title {
+		padding-bottom: 10px;
+	}
+}
+
+
+.event {
+	&__heading {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 10px;
+	}
+}

@@ -35,6 +35,8 @@ var onError = function(err) {
 //Define paths
 var paths = {
 	dest: 'compiled/',
+	assets: 'assets/**/*.*',
+	assetsDest: 'compiled/assets/',
 	js: ['scripts/*.jsx', 'scripts/*.js', 'scripts/**/*.js', 'scripts/**/*.jsx'],
 	jsDest: 'compiled/*.js',
 	lib: 'lib/*.js',
@@ -90,7 +92,8 @@ gulp.task('styles', function(){
 });
 
 gulp.task('build', ['scripts', 'styles', 'lib'], function(){
-
+	return gulp.src(paths.assets)
+		.pipe(gulp.dest(paths.assetsDest));
 });
 
 gulp.task('default', ['watch'], function(){

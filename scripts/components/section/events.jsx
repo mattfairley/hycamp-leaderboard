@@ -52,7 +52,7 @@ UI.section.events = {
     				var eventTime = {
     					time: time,
     					events: eventsByTime[time],
-    					moment: moment(eventsByTime[time][0])
+    					// moment: moment(eventsByTime[time][0])
     				};
     				eventDate.times.push(eventTime);
     			}
@@ -60,6 +60,7 @@ UI.section.events = {
     		}
 
 		   	days = days.map(day => {
+		   		// check to see if the event has already happened
 		    	return <UI.common.dateEvents times={day.times} key={day.date} date={day.date} />;
 		    });
 

@@ -7,8 +7,8 @@ UI.common.dateEvents = React.createClass({
 
 		return (
 
-			<div className="day">
-				<h3 className="day__title">{this.props.date}</h3>
+			<div className="event-list__day">
+				<h3 className="event-list__day__title">{this.props.date}</h3>
 				{times}
 			</div>
 		);

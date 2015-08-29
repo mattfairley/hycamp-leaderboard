@@ -10,9 +10,9 @@ body {
 
 a {
 	text-decoration: none;
-	color: $red;
+	color: $hyc-red;
 	&:hover, &:active {
-		color: darken($red, 20);
+		color: darken($hyc-red, 20);
 	}
 }
 

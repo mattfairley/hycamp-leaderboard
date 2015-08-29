@@ -18,6 +18,10 @@
 
 .data-row__title {
 	font-size: 20px;
+	&--event {
+		width: 25%;
+		padding-left: 10px;
+	}
 }
 
 .data-row__info {
@@ -29,7 +33,7 @@
 }
 
 .data-row__icon-container {
-	background: $red;
+	background: $hyc-red;
 	color: white;
 	width: 60px;
 	height: 60px;
@@ -40,15 +44,15 @@
 	border-radius: 50%;
 	@include card(1);
 	&--edit {
-		background: $blue;
+		background: $hyc-blue;
 		cursor: pointer;
 	}
 	&--add {
-		background: $green;
+		background: $hyc-green;
 		cursor: pointer;
 	}
 	&--rank {
-		background: $charcoal;
+		background: $hyc-charcoal;
 		margin-right: 10px;
 	}
 }

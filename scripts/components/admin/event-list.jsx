@@ -10,8 +10,8 @@ UI.admin.eventList = React.createClass({
 
 			<div className='data-row'>
 
+				<div className="data-row__title--event">{this.props.event.name}</div>
 				<div className="data-row__info">
-					<div className="data-row__title">{this.props.event.name}</div>
 					{this.props.event.location}{parsedTime}
 				</div>
 

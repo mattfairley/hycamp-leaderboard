@@ -1,7 +1,7 @@
 header {
 	display: flex;
 	flex-grow: 0;
-	background: $red;
+	background: $hyc-red;
 	color: $white;
 	align-items: center;
 	@include card(2);
@@ -69,7 +69,7 @@ header {
 		padding-left: 0;
 	}
 	.main-header {
-		background: $charcoal;
+		background: $hyc-charcoal;
 		justify-content: center;
 		order: 2;
 
@@ -87,7 +87,9 @@ header {
 			flex-basis: 33.33%;
 			display: flex;
 			justify-content: stretch;
-
+			&.is-active .navmenu__link {
+				// background: $hyc-blue;
+			}
 		}
 		.navmenu__link {
 			padding: 10px 5px;

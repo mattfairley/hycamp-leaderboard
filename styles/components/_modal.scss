@@ -49,9 +49,9 @@
 .modal__message {
 	padding: 10px;
 	&.success {
-		background: rgba($green, 0.4);
+		background: rgba($hyc-green, 0.4);
 	}
 	&.error {
-		background: rgba($red, 0.4);
+		background: rgba($hyc-red, 0.4);
 	}
 }

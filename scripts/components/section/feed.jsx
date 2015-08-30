@@ -16,18 +16,23 @@ UI.section.feed = {
     		return {
     			min: null,
     			max: null,
-    			results: []
+    			results: [],
+    			loading: true
     		};
     	},
 
     	componentWillMount() {
     		var self = this;
+    		self.setState({
+    			loading: true
+    		});
     		HYC.data.feed.list().then(function(res, data){
     			console.log(data);
     			self.setState({
     				min: data.more.min_tag_id,
-    				max: data.more.max_tag_id,
-    				results: data.results
+    				max: data.more.next_max_tag_id,
+    				results: data.results,
+    				loading: false
     			});
     		}).catch(function(err){
     			console.log(err);
@@ -37,12 +42,16 @@ UI.section.feed = {
     	getMore() {
     		var self = this;
     		var existingFeed = self.state.results;
+    		self.setState({
+    			loading: true
+    		});
     		HYC.data.feed.more(self.state.min, self.state.max).then(function(res, data){
     			console.log(data);
     			self.setState({
     				min: data.more.min_tag_id,
-    				max: data.more.max_tag_id,
-    				results: existingFeed.concat(data.results)
+    				max: data.more.next_max_tag_id,
+    				results: existingFeed.concat(data.results),
+    				loading: false
     			});
     		}).catch(function(err){
     			console.log(err);
@@ -50,28 +59,41 @@ UI.section.feed = {
     	},
 
     	render() {
-    		console.log('Rendering photos', this.state.results);
+    		console.log('Rendering pictures', this.state.results);
 
-    		var photos = this.state.results.map((photo, i) => {
-    			console.log(photo);
-    			// pic.user = 
+    		var pictures = this.state.results.map((picture, i) => {
 
-    			var pic = {
-    				caption: photo.caption.text,
-    				image: photo.images.standard_resolution.url,
-    				link: photo.link,
-    				user: photo.user.username
+    			var newPic = {
+    				caption: picture.caption.text,
+    				image: picture.images.standard_resolution.url,
+    				imageSmall: picture.images.low_resolution.url,
+    				link: picture.link,
+    				user: picture.user.username,
+    				profilePic: picture.user.profile_picture
     			};
 
-    			return <UI.common.picture key={i} picture={pic} /> ;
+    			return <UI.common.picture key={i} picture={newPic} /> ;
     		});
 
 
 
     		return (
     			<div className="section-wrapper">
-    				<div className="photo-feed">
-    					{photos}
+    				<div className="picture-feed">
+    					{pictures}
+    					{
+    						this.state.max ?
+    						<div className="load-more"><button className="load-more__button" onClick={this.getMore}>Load more...</button></div>
+    						
+    						:
+    						null
+    					}
+    					{
+    						this.state.loading ?
+    						<UI.common.loader />
+    						:
+    						null
+    					}
     				</div>
     			</div>
     		);

@@ -168,7 +168,7 @@ router.route('/events/:id')
 
 router.route('/feed')
 	.get(function(req,res){
-		ig.tag_media_recent('bluejays', {count: 10}, function(err, result, pagination, remaining, limit) {
+		ig.tag_media_recent('hackeryou', {count: 10}, function(err, result, pagination, remaining, limit) {
 			res.json({
 				results: result,
 				more: pagination
@@ -178,10 +178,11 @@ router.route('/feed')
 
 router.route('/feed/:min/:max')
 	.get(function(req, res){
-		ig.tag_media_recent('bluejays', {
-				count: 10, 
-				min_tag_id: req.params.min,
-				max_tag_id: req.params.max
+		console.log(req.params);
+		ig.tag_media_recent('hackeryou', {
+				// min_tag_id: req.params.min,
+				max_tag_id: req.params.max,
+				count: 10
 			}, function(err, result, pagination, remaining, limit) {
 			res.json({ 
 				results: result,

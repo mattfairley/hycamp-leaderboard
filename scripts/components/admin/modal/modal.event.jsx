@@ -115,7 +115,7 @@ UI.admin.modal.event = {
 			return (
 				<div className="modal__wrapper">
 					<div className="modal__container">
-					<i className="fa fa-times modal__close" onClick={this.closeModal}></i>
+					<span className="modal__close" onClick={this.closeModal}>&times;</span>
 					<div className="modal__header">
 						<h2 className="modal__title">{headerText}</h2>
 					</div>

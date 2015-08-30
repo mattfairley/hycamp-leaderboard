@@ -33,7 +33,7 @@ UI.admin.cabinList = React.createClass({
 		return (
 			<div className={'data-row '+this.props.type} id={cabin._id}>
 				<div className="data-row__icon-container">
-					<i className={'fa ' + cabin.icon}></i>
+					<i className={cabin.icon}></i>
 				</div>
 				<div className="data-row__info">
 					<h4 className="data-row__title">{cabin.name}</h4>
@@ -54,11 +54,11 @@ UI.admin.cabinList = React.createClass({
 				{
 					this.props.type === 'add' ?
 						<div className="data-row__icon-container data-row__icon-container--add" onClick={this.addPoints}>
-							<i className="fa fa-plus"></i>
+							<i className="icon-add"></i>
 						</div>
     				:
 	    				<div className="data-row__icon-container data-row__icon-container--edit" onClick={this.openModal}>
-	    					<i className="fa fa-pencil"></i>
+	    					<i className="icon-pencil"></i>
 						</div>
 					}
 			</div>

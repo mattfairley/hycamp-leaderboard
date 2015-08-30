@@ -2,9 +2,9 @@ UI.admin.nav = React.createClass({
 
 	subSectionChange: null,
 	navItems: [
-		{text: 'Points', icon: 'fa-trophy', link: '#'},
-		{text: 'Cabins', icon: 'fa-bed', link: '#cabins'},
-		{text: 'Events', icon: 'fa-calendar-o', link: '#events'}
+		{text: 'Points', icon: 'icon-trophy', link: '#'},
+		{text: 'Cabins', icon: 'icon-bed', link: '#cabins'},
+		{text: 'Events', icon: 'icon-calendar', link: '#events'}
 	],
 
 	getInitialState: function(){
@@ -36,7 +36,7 @@ UI.admin.nav = React.createClass({
 					if (self.state.currentSection === item.text)
 						style += ' is-active';
 					return <li className={style} key={i}>
-						<a href={item.link} className="navmenu__link"><i className={'navmenu__icon fa ' + item.icon}></i><span>{item.text}</span></a>
+						<a href={item.link} className="navmenu__link"><i className={'navmenu__icon ' + item.icon}></i><span>{item.text}</span></a>
 						</li>;
 				})
 				}

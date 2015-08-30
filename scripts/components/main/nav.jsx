@@ -2,9 +2,9 @@ UI.main.nav = React.createClass({
 
 	subSectionChange: null,
 	navItems: [
-		{text: 'Leaderboard', icon: 'fa-trophy', link: '#'},
-		{text: 'Feed', icon: 'fa-newspaper-o', link: '#feed'},
-		{text: 'Events', icon: 'fa-calendar-o', link: '#events'}
+		{text: 'Leaderboard', icon: 'icon-trophy', link: '#'},
+		{text: 'Feed', icon: 'icon-camera', link: '#feed'},
+		{text: 'Events', icon: 'icon-calendar', link: '#events'}
 	],
 
 	getInitialState: function(){
@@ -42,7 +42,7 @@ UI.main.nav = React.createClass({
 							<div className="icon icon-small"><UI.common.icon /></div>
 							:
 						*/}
-							<i className={'navmenu__icon fa ' + item.icon}></i>
+							<i className={'navmenu__icon ' + item.icon}></i>
 							<span>{item.text}</span>
 						</a>
 						</li>;

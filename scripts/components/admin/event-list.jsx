@@ -16,7 +16,7 @@ UI.admin.eventList = React.createClass({
 				</div>
 
 				<div className="data-row__icon-container data-row__icon-container--edit" onClick={this.openModal}>
-	    			<i className="fa fa-pencil"></i>
+	    			<i className="icon-pencil"></i>
 				</div>
 			</div>
 		);

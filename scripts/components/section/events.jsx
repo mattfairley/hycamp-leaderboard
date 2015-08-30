@@ -36,7 +36,7 @@ UI.section.events = {
     		// Add some new time-related events to the event object
     		events = events.map(event => {
     			var m = moment(event.time);
-    			var end = moment(event.time).add(event.duration, 'm')
+    			var end = moment(event.time).add(event.duration, 'm');
     			event.moment = m;
     			event.sortDate = m.format('DD-MM-YYYY');
     			event.displayDate = m.format('dddd');

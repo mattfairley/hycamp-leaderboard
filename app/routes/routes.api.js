@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var moment = require('moment');
+var ig = require('instagram-node').instagram({});
+
+ig.use({client_id: '2ff45eea45c141f9ab5d1ec988490f63', client_secret: '8447bff7c4ba4ef499ce9c7a1519d411'});
 
 router.use(function(req, res, next){
 	res.contentType('application/json');
@@ -112,7 +115,6 @@ router.route('/events')
 		event.duration = req.body.duration;
 		event.time = moment(req.body.time, 'MMM DD HH:mm');
 		event.description = req.body.description;
-	   	console.log(event);
 		event.save(function(err) {
 	    	if (err)
 	        	return res.send(err);
@@ -162,6 +164,31 @@ router.route('/events/:id')
 
 			res.json({ message: 'Successfully deleted' });
 		});
-	})
+	});
+
+router.route('/feed')
+	.get(function(req,res){
+		ig.tag_media_recent('bluejays', {count: 10}, function(err, result, pagination, remaining, limit) {
+			res.json({
+				results: result,
+				more: pagination
+			});
+		});
+	});
+
+router.route('/feed/:min/:max')
+	.get(function(req, res){
+		ig.tag_media_recent('bluejays', {
+				count: 10, 
+				min_tag_id: req.params.min,
+				max_tag_id: req.params.max
+			}, function(err, result, pagination, remaining, limit) {
+			res.json({ 
+				results: result,
+				more: pagination
+			});
+		});
+	});
+
 
 module.exports = router;

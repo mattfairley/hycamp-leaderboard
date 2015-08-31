@@ -13,6 +13,18 @@
 			padding: 0 20px;
 			flex: 1;
 		}
+		@media (max-width: $smallest) {
+			.data-row__info {
+				padding: 0 10px;
+				font-size: 16px;
+			}
+			.data-row__points {
+				font-size: 22px;
+				span:last-child {
+					display: none;
+				}
+			}
+		}
 	}
 }
 
@@ -88,5 +100,14 @@
 	}
 	.data-row__title {
 		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: $smallest) {
+	.data-row {
+		margin-bottom: 0;
+		&:first-child {
+			margin-top: 0;
+		}
 	}
 }

@@ -53,7 +53,7 @@ gulp.task('scripts', ['lint'], function(){
 		.pipe(gulpif(argv.prod, sourcemaps.init()))
 		.pipe(react())
 		.pipe(concat('main.min.js'))
-		.pipe(gulpif(argv.prod, uglify('main.min.js')))
+		.pipe(gulpif(argv.prod, uglify()))
 		.pipe(gulpif(argv.prod, sourcemaps.write('./map')))
 		.pipe(gulp.dest(paths.dest))
 		.pipe(plumber.stop());
@@ -63,7 +63,7 @@ gulp.task('lib', function(){
 	return gulp.src(paths.lib)
 		// .pipe(sourcemaps.init())
 		.pipe(concat('lib.min.js'))
-		.pipe(gulpif(argv.prod, uglify('lib.min.js')))
+		.pipe(gulpif(argv.prod, uglify()))
 		// .pipe(sourcemaps.write('./map'))
 		.pipe(gulp.dest(paths.dest));
 });

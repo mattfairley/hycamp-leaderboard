@@ -82,15 +82,12 @@ UI.section.feed = {
     				<div className="picture-feed">
     					{pictures}
     					{
+    						this.state.loading ?
+    						<UI.common.loader />
+    						:
     						this.state.max ?
     						<div className="load-more"><button className="load-more__button" onClick={this.getMore}>Load more...</button></div>
     						
-    						:
-    						null
-    					}
-    					{
-    						this.state.loading ?
-    						<UI.common.loader />
     						:
     						null
     					}

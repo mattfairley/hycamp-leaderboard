@@ -1,7 +1,7 @@
 UI.section.events = {
 	register(){
         console.info('[UI.section.events] register route');
-        HYC.router.rr.add([{ path: '/events', handler: UI.section.events.render }]);
+        HYC.router.rr.add([{ path: '/', handler: UI.section.events.render }]);
     },
 
     render(container, params) {

@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var jade = require('jade');
 var morgan = require('morgan');
+var session = require('express-session');
 var bodyParser = require('body-parser'); //parser for JSON
 var config = require('./config/config');
 

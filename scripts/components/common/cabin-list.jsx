@@ -6,7 +6,6 @@ UI.common.cabinList = React.createClass({
 
 	render() {
 		var cabin = this.props.cabin;
-		console.log(this.props);
 		return (
 			<div className={'data-row '+this.props.type} id={cabin._id}>
 				<div className="data-row__icon-container data-row__icon-container--rank">

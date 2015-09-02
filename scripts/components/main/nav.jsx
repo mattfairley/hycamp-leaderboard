@@ -2,9 +2,9 @@ UI.main.nav = React.createClass({
 
 	subSectionChange: null,
 	navItems: [
-		{text: 'Leaderboard', icon: 'icon-trophy', link: '#'},
+		{text: 'Events', icon: 'icon-calendar', link: '#'},
 		{text: 'Feed', icon: 'icon-camera', link: '#feed'},
-		{text: 'Events', icon: 'icon-calendar', link: '#events'}
+		{text: 'Leaderboard', icon: 'icon-trophy', link: '#leaderboard'}
 	],
 
 	getInitialState: function(){

@@ -1,7 +1,7 @@
 UI.section.leaderboard = {
 	register(){
         console.info('[UI.section.leaderboard] register route');
-        HYC.router.rr.add([{ path: '/', handler: UI.section.leaderboard.render }]);
+        HYC.router.rr.add([{ path: '/leaderboard', handler: UI.section.leaderboard.render }]);
     },
 
     render(container, params) {

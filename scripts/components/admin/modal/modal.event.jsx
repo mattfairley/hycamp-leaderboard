@@ -1,5 +1,6 @@
 UI.admin.modal.event = {
 
+	// Opens the modal, passing in an event id and the event data itself (both optional params)
 	open(id, event) {
 		event = event || {};
 		var modal = document.getElementById('modal');
@@ -12,6 +13,7 @@ UI.admin.modal.event = {
 		});
 	},
 
+	// Closing the modal, which will remove the visible classes and unmount the component
 	close() {
 		var modal = document.getElementById('modal');
 		HYC.removeClass(modal, 'is-visible');
@@ -21,6 +23,7 @@ UI.admin.modal.event = {
 
 	element: React.createClass({
 
+		// Set initial state, which is a message (string) and a messageType (error or success)
 		getInitialState() {
 			return {
 				message: null,
@@ -28,14 +31,12 @@ UI.admin.modal.event = {
 			};
 		},
 
-		componentWillMount() {
-
-		},
-
+		// Close the modal
 		closeModal() {
 			UI.admin.modal.event.close();
 		},
 
+		// Delete the event
 		deleteEvent(e) {
 			e.preventDefault();
 			var self = this;
@@ -47,10 +48,11 @@ UI.admin.modal.event = {
     			self.closeModal();
     			//TODO show successful delete message
     		}).catch(function(err){
-    			console.error('Error deleting event', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 
+		// Edit the event, passing in the appropriate data items to the API
 		editEvent(e) {
 			e.preventDefault();
 	
@@ -76,10 +78,11 @@ UI.admin.modal.event = {
     			});
     			//TODO show successful edit message
     		}).catch(function(err){
-    			console.error('Error getting event list', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 
+		// Add cabin, passing in the values and pushing to the .add api endpoint
 		addEvent(e) {
 			e.preventDefault();
 	
@@ -97,14 +100,14 @@ UI.admin.modal.event = {
 				time: time
 			};
 			HYC.data.events.add(data).then(function(res, data){
+				// Publish the success message that will be passed back to the events page
     			HYC.events.publish('eventChanged', {
     				message: 'Event successfully added',
     				type: 'success'
     			});
     			self.closeModal();
-    			//TODO show successful add message
     		}).catch(function(err){
-    			console.error('Error getting event list', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 

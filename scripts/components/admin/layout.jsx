@@ -1,7 +1,7 @@
 UI.admin.layout = React.createClass({
 
 	getInitialState() {
-		return {title: 'HYCamp Admin'};
+		return {title: 'Bootcampfire Admin'};
 	},
 
 	// componentDidMount: function() {

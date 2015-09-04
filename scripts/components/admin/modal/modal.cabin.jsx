@@ -1,5 +1,7 @@
 UI.admin.modal.cabin = {
 
+
+	// Opens the modal, passing in a cabin id and the cabin data itself
 	open(id, cabin) {
 		var self = this;
 		cabin = cabin || {};
@@ -14,6 +16,7 @@ UI.admin.modal.cabin = {
 		});
 	},
 
+	// Closing the modal, which will remove the visible classes and unmount the component
 	close() {
 		var modal = document.getElementById('modal');
 		HYC.removeClass(modal, 'is-visible');
@@ -23,6 +26,7 @@ UI.admin.modal.cabin = {
 
 	element: React.createClass({
 
+		// Set initial state, which is a message (string) and a messageType (error or success)
 		getInitialState() {
 			return {
 				message: null,
@@ -30,14 +34,12 @@ UI.admin.modal.cabin = {
 			};
 		},
 
-		componentWillMount() {
-
-		},
-
+		// Close the modal
 		closeModal() {
 			UI.admin.modal.cabin.close();
 		},
 
+		// Delete the cabin
 		deleteCabin(e) {
 			e.preventDefault();
 			var self = this;
@@ -49,10 +51,11 @@ UI.admin.modal.cabin = {
     			self.closeModal();
     			//TODO show successful delete message
     		}).catch(function(err){
-    			console.error('Error deleting cabin', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 
+		// Edit cabin, passing in the various data items to the api
 		editCabin(e) {
 			e.preventDefault();
 	
@@ -77,10 +80,11 @@ UI.admin.modal.cabin = {
     			});
     			HYC.events.publish('cabinChanged', {});
     		}).catch(function(err){
-    			console.error('Error getting cabin list', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 
+		// Add cabin, passing in the values and pushing to the .add api endpoint
 		addCabin(e) {
 			e.preventDefault();
 	
@@ -96,14 +100,14 @@ UI.admin.modal.cabin = {
 				members: members
 			};
 			HYC.data.cabins.add(data).then(function(res, data){
+				// Publish the success message that will be passed back to the cabins page
     			HYC.events.publish('cabinChanged', {
     				message: 'Cabin successfully added',
     				type: 'success'
     			});
     			self.closeModal();
-    			//TODO show successful add message
     		}).catch(function(err){
-    			console.error('Error getting cabin list', err);
+    			self.setState({message: message, messageType: error});
     		});
 		},
 
@@ -117,6 +121,7 @@ UI.admin.modal.cabin = {
 					<div className="modal__header">
 						<h2 className="modal__title">{headerText}</h2>
 					</div>
+					{/* If there is a message, render the message paragraph */}
 					{
 						this.state.message ?
 						<p className={'modal__message ' + this.state.messageType}>{this.state.message}</p>

@@ -1,26 +1,11 @@
 var express = require('express');
-var app = express();
 var router = express.Router();
 var config = require('../../config/config.js');
-var session = require('express-session');
-var uuid = require('uuid');
-
-router.use(session({
-	genid: function(req) {
-		return uuid.v4()
-	},
-	resave: false,
-	saveUninitialized: false,
-	secret: config.appSecret
-}));
-
-router.use(function(req,res,next){
-	console.log('This is where auth will go, limiting access to the admin panel');
-	next();
-});
+var sess;
 
 function requireLogin(req, res, next) {
-	if (req.session.loggedIn) {
+	sess = req.session;
+	if (sess.loggedIn) {
 		next();
 	} else {
 		res.redirect('admin/login');
@@ -34,20 +19,24 @@ router.get('/', requireLogin, function(req, res){
 });
 
 router.get('/login', function(req, res){
-
-	res.render('login', {title: 'Log in'});
+	sess = req.session;
+	var error;
+	if (sess.loginFail) {
+		error = 'Login failed'
+	}
+	res.render('login', {title: 'Log in', error: error});
 });
 
 router.post('/login', function(req, res){
-	console.log(req.body);
-
+	sess = req.session;
 	//check to see if username and password match the presets
-	if (req.body.username === config.username && req.body.admin.password === config.admin.password) {
-		console.log('done');
-		res.session.loggedIn = true;
-		res.redirect('admin/');
+	if (req.body.username === config.admin.username && req.body.password === config.admin.password) {
+		sess.loggedIn = true;
+		sess.loginFail = false;
+		res.redirect('/admin');
 	} else {
-		res.json({success: false});
+		sess.loginFail = true;
+		res.redirect('/admin/login')
 	}
 });
 

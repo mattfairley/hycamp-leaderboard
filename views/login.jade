@@ -5,9 +5,14 @@ html
 		title HackerYou.camp
 		link(rel='stylesheet', href="../main.css")
 	body#login
-		form(action="#" method="POST")
-			input#username(name="username" type="text")
-			input#password(name="password" type="password")
-			input#login(type="submit" value="Log In")
+		form.login(action="#" method="POST")
+			if error
+				p.login__error #{error}
+			h3.login__title Log In
+			label.login__label(for="username") Username
+				input.login__input#username(name="username" type="text")
+			label.login__label(for="password") Password
+				input.login__input#password(name="password" type="password")
+			input.login__btn#login(type="submit" value="Log In")
 
 		script(src="../lib.min.js")

@@ -7,12 +7,23 @@ var morgan = require('morgan');
 var session = require('express-session');
 var bodyParser = require('body-parser'); //parser for JSON
 var config = require('./config/config');
+var session = require('express-session');
+var uuid = require('uuid');
 
 // SET THE BIG VARIABLES
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use(session({
+	genid: function(req) {
+		return uuid.v4()
+	},
+	resave: false,
+	saveUninitialized: false,
+	secret: config.appSecret
+}));
 
 // CONNECT TO THE DATABASE
 mongoose.connect(config.db.url);

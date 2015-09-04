@@ -2,6 +2,41 @@ form {
 	display: flex;
 }
 
+
+#login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.login {
+	@include card(2);
+	flex-flow: wrap column;
+	max-width: 300px;
+	margin: 0 20px;
+	padding: 15px;
+	height: 305px;
+	align-items: center;
+	justify-content: center;
+	&__title {
+		margin-bottom: 10px;
+	}
+	&__label {
+		text-align: center;
+	}
+	&__input {
+		margin: 10px;
+	}
+	&__btn {
+		width: 150px;
+		margin-top: 10px;
+	}
+	&__error {
+		margin-bottom: 20px;
+		font-weight: 700;
+		color: $hyc-red;
+	}
+}
+
 .form {
 	flex-flow: column;
 }

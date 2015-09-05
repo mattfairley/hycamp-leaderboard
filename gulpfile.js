@@ -16,7 +16,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 
 // scripts
-var react = require('gulp-react');
+var babel = require('gulp-babel');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 
@@ -28,7 +28,7 @@ var nodemon = require('gulp-nodemon');
 //Error handling that will return an error, but not break the watch task
 var onError = function(err) {
     gutil.beep();
-    console.error(err.message);
+    console.error(err);
     this.emit('end');
 }
 
@@ -52,7 +52,7 @@ gulp.task('scripts', ['lint'], function(){
 			errorHandler: onError
 		}))
 		.pipe(gulpif(argv.prod, sourcemaps.init()))
-		.pipe(react())
+		.pipe(babel())
 		.pipe(concat('main.min.js'))
 		.pipe(gulpif(argv.prod, uglify()))
 		.pipe(gulpif(argv.prod, sourcemaps.write('./map')))

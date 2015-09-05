@@ -39,10 +39,10 @@ router.route('/cabins')
 		cabin.points = 0;
 		cabin.members = req.body.members;
 		cabin.icon = req.body.icon
-	   
 		cabin.save(function(err) {
 	    	if (err)
 	        	return res.send(err);
+	    	console.log('Saving new cabin', req.body.name);
 
 	    	res.json({ message: 'cabin created', data: cabin });
 		});
@@ -53,7 +53,7 @@ router.route('/cabins/:id')
 		var Cabin = req.app.get('models').cabin;
 		Cabin.findById(req.params.id, function(err, cabin) {
 			if (err) return res.send(err);
-
+			console.log('Getting cabin details', cabin.name);
 			// return that Cabin
 			res.json(cabin);
 		});
@@ -72,7 +72,7 @@ router.route('/cabins/:id')
 
 			cabin.save(function(err) {
 				if (err) return res.send(err);
-
+				console.log('Saving cabin details', cabin.name);
 				// return a message
 				res.json(cabin);
 			});
@@ -86,7 +86,7 @@ router.route('/cabins/:id')
 			_id: req.params.id
 		}, function(err, cabin) {
 			if (err) return res.send(err);
-
+			console.log('Deliting cabin', cabin.name);
 			res.json({ message: 'Successfully deleted' });
 		});
 	})
@@ -100,7 +100,6 @@ router.route('/events')
 	    	var output = {results: events}
 	        if (err)
 	            return res.send(err);
-
 	        res.json(output);
 	    });
 	})
@@ -118,7 +117,7 @@ router.route('/events')
 		event.save(function(err) {
 	    	if (err)
 	        	return res.send(err);
-
+	        console.log('Creating event', event.name);
 	    	res.json({ message: 'event created' });
 		});
 	})
@@ -128,7 +127,7 @@ router.route('/events/:id')
 		var Event = req.app.get('models').event;
 		Event.findById(req.params.id, function(err, event) {
 			if (err) return res.send(err);
-
+			console.log('Getting event details', event.name);
 			// return that Cabin
 			res.json(event);
 		});
@@ -147,7 +146,7 @@ router.route('/events/:id')
 
 			event.save(function(err) {
 				if (err) return res.send(err);
-
+				console.log('Editing event details', event.name);
 				// return a message
 				res.json(event);
 			});
@@ -161,7 +160,7 @@ router.route('/events/:id')
 			_id: req.params.id
 		}, function(err, event) {
 			if (err) return res.send(err);
-
+			console.log('Deleting event', event.name);
 			res.json({ message: 'Successfully deleted' });
 		});
 	});

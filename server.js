@@ -8,6 +8,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser'); //parser for JSON
 var config = require('./config/config');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var uuid = require('uuid');
 
 // SET THE BIG VARIABLES
@@ -22,7 +23,11 @@ app.use(session({
 	},
 	resave: false,
 	saveUninitialized: false,
-	secret: config.appSecret
+	secret: config.appSecret,
+	store: new MongoStore({
+		url: config.db_url,
+		ttl: 3 * 24 * 60 * 60 //3 days expiry
+	})
 }));
 
 // CONNECT TO THE DATABASE

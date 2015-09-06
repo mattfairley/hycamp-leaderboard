@@ -28,6 +28,7 @@
 	padding: 20px;
 	margin: 10px;
 	flex: 1 1 100%;
+
 	@include card(2);
 	&__heading {
 		display: flex;
@@ -41,5 +42,6 @@
 @media (min-width: $small) {
 	.event {
 		flex: 1;
+		min-width: calc(50% - 40px);
 	}
 }

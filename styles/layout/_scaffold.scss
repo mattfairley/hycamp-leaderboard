@@ -71,5 +71,8 @@
 	align-items: center;
 	@media screen and (max-width: $smallest) {
 		display: flex;
+		.icon-small {
+			margin: 5px 0;
+		}
 	}
 }

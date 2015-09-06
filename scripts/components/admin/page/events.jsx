@@ -54,7 +54,8 @@ UI.admin.page.events = {
 
     	render() {
     		console.log('Rendering', this.state.events);
-    		var events = this.state.events.map(function(event) {
+
+    		var events = HYC.sort(this.state.events, 'time', false).map(function(event) {
                 return <UI.admin.eventList event={event} key={event._id} />;
             });
 

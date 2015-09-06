@@ -26,7 +26,7 @@ app.use(session({
 }));
 
 // CONNECT TO THE DATABASE
-mongoose.connect(config.db.url);
+mongoose.connect(config.db_url);
 
 // BRING IN THE MODELS
 app.set('models', require('./app/models')(app, mongoose));

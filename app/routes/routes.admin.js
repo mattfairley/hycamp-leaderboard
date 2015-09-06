@@ -30,7 +30,7 @@ router.get('/login', function(req, res){
 router.post('/login', function(req, res){
 	sess = req.session;
 	//check to see if username and password match the presets
-	if (req.body.username === config.admin.username && req.body.password === config.admin.password) {
+	if (req.body.username === config.admin_username && req.body.password === config.admin_password) {
 		sess.loggedIn = true;
 		sess.loginFail = false;
 		res.redirect('/admin');

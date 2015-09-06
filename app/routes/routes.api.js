@@ -3,7 +3,7 @@ var router = express.Router();
 var moment = require('moment');
 var ig = require('instagram-node').instagram({});
 var config = require('../../config/config.js')
-ig.use(config.ig);
+ig.use({client_id: config.ig_client_id, client_secret: config.ig_client_secret});
 
 router.use(function(req, res, next){
 	res.contentType('application/json');

@@ -177,7 +177,6 @@ router.route('/feed')
 
 router.route('/feed/:min/:max')
 	.get(function(req, res){
-		console.log(req.params);
 		ig.tag_media_recent('hackeryou', {
 				// min_tag_id: req.params.min,
 				max_tag_id: req.params.max,

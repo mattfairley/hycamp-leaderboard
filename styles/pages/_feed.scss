@@ -16,6 +16,21 @@
 	width: 100%;
 }
 
+.picture__link {
+	position: relative;
+}
+
+.picture__video {
+	position: absolute;
+	bottom: 3px;
+	right: 0;
+	display: inline-block;
+	padding: 10px;
+	background: #fff;
+	color: $hyc-charcoal;
+	@include card(1);
+}
+
 .picture__title {
 	padding-bottom: 10px;
 	display: flex;

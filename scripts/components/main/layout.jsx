@@ -1,7 +1,7 @@
 UI.main.layout = React.createClass({
 
 	getInitialState() {
-		return {title: 'Bootcampfire'};
+		return {title: 'BootCampfire'};
 	},
 
 	// componentDidMount: function() {

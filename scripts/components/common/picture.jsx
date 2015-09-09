@@ -1,6 +1,8 @@
 UI.common.picture = React.createClass({
+
 	render() {
 		var picture = this.props.picture;
+
 		return (
 			<div className="picture">
 				<div className="picture__title">

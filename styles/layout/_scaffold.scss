@@ -72,6 +72,7 @@
 	@media screen and (max-width: $smallest) {
 		display: flex;
 		padding: 0;
+		max-height: 45px;
 		.icon-small {
 			margin: 5px 0;
 		}

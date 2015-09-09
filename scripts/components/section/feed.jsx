@@ -68,6 +68,8 @@ UI.section.feed = {
     				image: picture.images.standard_resolution.url,
     				imageSmall: picture.images.low_resolution.url,
     				link: picture.link,
+    				type: picture.type,
+    				videos: picture.videos,
     				user: picture.user.username,
     				profilePic: picture.user.profile_picture
     			};

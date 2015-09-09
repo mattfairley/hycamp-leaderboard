@@ -23,6 +23,7 @@
 	justify-content: center;
 	overflow: hidden;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .admin-wrapper, .section-wrapper {
